@@ -7,10 +7,18 @@
 <nav class ='loja1'>
 
 <ul>
-<li><a href=''><figure><img  src="./PIC/loja_ARAM1.webp"  alt=''/><figcaption><h3>TODOS OS PRODUTOS</h3></figcaption></figure></a></li>
-<li><a href=''><figure><img  src="./PIC/loja_ARAM2.webp" alt=''/><figcaption><h3>SAÚDE ARTICULAR</h3></figcaption></figure></a></li>
-<li><a href=''><figure><img  src="./PIC/loja_ARAM3.webp" alt=''/><figcaption><h3>ELECTROTERAPIA</h3></figcaption></figure></a></li>
-</ul></nav></center>
+<li>
+    <figure><a href="index.php?option=./PAGINA_HTML/loja&tip=suplu_electro"><img  src="./PIC/loja_ARAM1.webp"  alt=''/></a>
+    <figcaption><a href="index.php?option=./PAGINA_HTML/loja"><h3>TODOS OS PRODUTOS</h3></a></figcaption></figure></li>
+<li>
+    <figure><a href="index.php?option=./PAGINA_HTML/loja&tip=suplu_electro"><img  src="./PIC/loja_ARAM2.webp" alt=''/></a>
+    <figcaption><a href="index.php?option=./PAGINA_HTML/loja"><h3>SAÚDE ARTICULAR</h3></a></figcaption></figure></li>
+
+<li>
+    <figure><a href="index.php?option=./PAGINA_HTML/loja&tip=electro"><img  src="./PIC/loja_ARAM3.webp" alt=''/></a>
+    <figcaption><a href="index.php?option=./PAGINA_HTML/loja&tip=electro""><h3>ELECTROTERAPIA</h3></a></figcaption></figure></li>
+</ul></nav>
+</center>
 </div>
 <div style='clear: both;width: 100%'>
 <form name="" id='' action="" method="post" style="margin: 0px; padding: 0px;width: 30%;float: left;" >
@@ -26,8 +34,13 @@
  <div id='prosmotr'></div>
 <div id='prosmotr1'></div>
 
- <?php echo ( $asa->xml_obj['loja']->loja);    ?>
 
-
-
+ <?php 
+ //print_r($asa->xml_obj);loja,loja_electro,loja_suplum
+ echo ( $asa->xml_obj['loja']->loja);    
+//---------------------------------------------
+echo ( $asa->xml_obj['loja_electro']->loja_electro);  
+//----------------------------------------------------
+echo ( $asa->xml_obj['loja_suplum']->loja_suplum);  
+?>
 </div>

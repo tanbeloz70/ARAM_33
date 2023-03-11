@@ -6,7 +6,7 @@
        OFERECEMOS TERAPIAS PERSOALIZADAS CRIADAS CUIDADOSAMENTE PARA ATENDER AS NECESIDADES ESPECIFICAS DE CADA UM DOS NOSSOS PACIENTES.
 </h1></div>
 
-<div class="missao">
+<div class="">
 <h2> MISSÃO ARAM</h2>
 <H3>
 Mudar a forma como a saúde é entendida, usando movimento, alimentação e os suplementos adequados

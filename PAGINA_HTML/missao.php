@@ -2,10 +2,12 @@
 playsinline="" preload="auto" 
 loop="" tabindex="-1" autoplay="" 
 src="./PIC/probeg.mp4" 
-style="height: 100%; width: 100%; object-fit: cover; object-position: center center; opacity: 1;">
+style="height: 100%;min-height:800px; width: 100%; object-fit: cover; object-position: center center; opacity: 1;">
 </video>
-<div class='missao'>
-<p>Mudar a forma como a saúde é entendida, usando movimento, alimentação e os suplementos adequados.</p>
+<div class='loja1 missao'>
+<h6>
+A nossa missão</h6>
+ <h1>  Mudar a forma como a saúde é entendida, usando movimento, alimentação e os suplementos adequados.</h1> 
 <p>No ARAM  trabalhamos todos os dias para o bem-estar dos nossos clientes e 
     para poder oferecer-lhes a terapia mais rápida e eficaz respeitando sempre as condições
      e ritmo específicos de cada paciente.</p>
