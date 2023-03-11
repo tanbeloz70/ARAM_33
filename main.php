@@ -34,7 +34,7 @@ Fortalece os músculos atrofiados." />
 
 <center>
 <?php 
-echo $asa->bod_seredina;
+//echo $asa->bod_seredina;
  include($asa->bod_seredina); 
 
 ?>
