@@ -2,9 +2,11 @@
 class para_trab_XML{
 public function __construct ($vall,$key){
  
-  
+
   $this->get_dad_($vall);
   $this->dado=$this->read_xml_document();
+ // print_r($this->dado);
+  //echo "<br>";
   $this->$key=$this->get_Shablon_();
 
 
@@ -13,11 +15,14 @@ public function __construct ($vall,$key){
 public function get_dad_($vall){
   foreach ($vall as $key=>$vallos){
     $this->$key=$vallos;
+  // echo "key= ".$key." = ";
+   //print_r ($vallos);
+   // echo "<br>-------";
 }
 }
 public function get_file_($num) {
   $dir2=$this->dod_file.$num.'.txt';
-      echo  $dir2;
+    //  echo  $dir2;
       $res="";   
           if (file_exists($dir2)) {
                      $handle = fopen($dir2, "r");
@@ -30,7 +35,7 @@ return $res;
 
 
 public function read_xml_document(){
-    echo "#######=". $this->nazn."<br>";
+  //  echo "#######=". $this->nazn."<br>";
     $res=0;
     $pagina=array();
     if (file_exists($this->nazn)) 
@@ -40,9 +45,13 @@ public function read_xml_document(){
           $movies = new SimpleXMLElement($xmlstr);
         //print_r($movies);
           foreach ($movies as $responda){
-       
-          foreach( $responda->attributes() as $key=>$value ){                        
+
+         // if ($responda->attributes($this->campo_umova)==$this->tip)
+
+          foreach( $responda->attributes() as $key=>$value ){ 
+                              
                               $pagina[ ((string) $responda[$this->key_primeira])][$key]=(string)$value ;
+
   //                            echo "parsing  :".  ((string)[$num])." ".$key."=".(string)$value."<br>" ;
 
 
@@ -51,8 +60,8 @@ public function read_xml_document(){
     }                     
     {$this->erro[0] ="file para menu nao exist, proquras diretoriu para menu "; }
 
-    echo "****************=";
- print_r($pagina);
+   // echo "****************=";
+ //print_r($pagina);
 return ( $pagina);
 
 }
@@ -67,8 +76,17 @@ public function get_Shablon_() {
  
  foreach ($this->dado as $dad)
   { $i=0;
+
+     
       foreach($this->campos as $value)
-         {  $s[$i]=$dad[$value];$i=$i+1;}
+         { 
+          
+          $s[$i]=$dad[$value];$i=$i+1;
+        
+        
+        
+        
+        }
 
       if (isset($this->dod_file))
                          {   $s[$i]=  $this->get_file_($dad[$this->key_primeira]);                   
@@ -98,13 +116,14 @@ public function write_xml_document($p_menu,$num){
 
 class  Acore {
 protected  function get_modul($modul){
-	if ($modul=='por_loja')
+	//if ($modul=='por_loja')
     {
-	$pagina_modul=para_suplumentos.$_GET['id'].".php";
+	//$pagina_modul=para_suplumentos.$_GET['id'].".php";
 	
 	}
 	
-	else $pagina_modul=PAGINA_HTML.$modul.".php";
+//	else
+   $pagina_modul=$modul.".php";;
 	
           
        
@@ -142,34 +161,82 @@ public function __construct()
 {
 
 include 'config.php';
-$element_pagina= array('heder','slader','loja');
-$element['heder']=array ('nazn'=>para_menu,'key_primeira'=>'name','campos'=>array('name','disri'));
+//$element_pagina= array('heder','slader'=>'home','loja'=>'loja');
+$element['heder']=array ('nazn'=>para_menu,'key_primeira'=>'name','campos'=>array('name','disri'),'put'=>PAGINA_HTML);
 $element['heder']['sablon'] ="<li><a href='index.php?option=%s' >%s</a></li> ";
   
+
 $element['slader']=array ('nazn'=>para_pleer,'key_primeira'=>'num','campos'=>array('num','name_client'),'dod_file'=>para_pleer_txt_file.'client_');
 $element['slader']['sablon'] ="<li><div><div class='pich'><img src ='".para_pleer_foto."%s.webp'  > </img> </div><div class='divav'><h4>%s</h4>%s</div></div></li>";
 
-$element['loja']=array ('nazn'=>para_loja_suplumentos,'key_primeira'=>'id','campos'=>array('id','id','name','name','id',
-'imj_jpg','name','id','name','sena'));
+
+
+$element['loja']=array ('nazn'=>para_loja_suplumentos,'key_primeira'=>'id','campos'=>array('id','tovar','id','tip','name','name','tovar',
+'id','tip','imj_jpg','name','tovar','id','tip','name','sena'),'campo_umova'=>'tip');
 $element['loja']['sablon'] ="<div id='%s_'>
-     <a href='index.php?option=por_loja&id=%s' title='Visualização rápida_%s'><h3>%s</h3></a>
-     <a href='index.php?option=por_loja&id=%s' ><img src='./PARA_LOJA/SUPLUMENTOS/pic/%s'  title='Visualização rápida_%s' >
-	 </img></a><a href='index.php?option=por_loja&id=%s' title='Visualização rápida_%s'> <h4>%s</h4></a></div>";
+     <a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' title='Visualização rápida_%s'><h3>%s</h3></a>
+     <a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' ><img src='./PARA_LOJA/SUPLUMENTOS/pic/%s'  title='Visualização rápida_%s' >
+	 </img></a><a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' title='Visualização rápida_%s'> <h4>%s</h4></a></div>";
+
+ $element['loja_electro']=array ('nazn'=>para_loja_suplumentos,'key_primeira'=>'id','campos'=>array('id','tovar','id','tip','name','name','tovar',
+'id','tip','imj_jpg','name','tovar','id','tip','name','sena'),'campo_umova'=>'tip');
+$element['loja_electro']['sablon'] ="<div id='%s_'>
+<a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' title='Visualização rápida_%s'><h3>%s</h3></a>
+<a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' ><img src='./PARA_LOJA/SUPLUMENTOS/pic/%s'  title='Visualização rápida_%s' >
+</img></a><a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' title='Visualização rápida_%s'> <h4>%s</h4></a></div>";
+
+$element['loja_suplum']=array ('nazn'=>para_loja_suplumentos,'key_primeira'=>'id','campos'=>array('id','tovar','id','tip','name','name','tovar',
+'id','tip','imj_jpg','name','tovar','id','tip','name','sena'),'campo_umova'=>'tip');
+$element['loja_suplum']['sablon'] ="<div id='%s_'>
+<a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' title='Visualização rápida_%s'><h3>%s</h3></a>
+<a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' ><img src='./PARA_LOJA/SUPLUMENTOS/pic/%s'  title='Visualização rápida_%s' >
+</img></a><a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' title='Visualização rápida_%s'> <h4>%s</h4></a></div>";
 
 
 
+
+
+//-----------------------------------------------------------------------------------------------------------------------  
+// menu main incima
+   $this->xml_obj['heder']=new para_trab_XML($element['heder'],'heder');
+   $key_s=$this->xml_obj['heder']->key_primeira;
+   echo "<br/>*****";
+   foreach ($this->xml_obj['heder']->dado as $key => $value){
+       if (isset ($value[pagina_object])) { $this->$key=$value[pagina_object];};
+       
+   }
+//--------------------------------------------------------------------------------------------------------------------
+
+
+if (isset ($_GET['tip'])) { $this->tip=$_GET['tip'];}
 $this->adress=adress;
-foreach($element_pagina as $val){
-       $this->xml_obj[$val]=new para_trab_XML($element[$val],$val);
+
+
+//------------------------upload modul----and create object for page------------------
+if (isset ($_GET['option']))  {
+  $mod=$_GET['option'];
+  if (isset($this->$mod)) {  $elem_pag=explode(",", $this->$mod);
+                            foreach ($elem_pag as $pag_val){
+                              if (isset($element[$pag_val])){
+                             $this->xml_obj[$pag_val]=new para_trab_XML($element[$pag_val],$pag_val);
+                            }}
+  
+                                                                  }
+  $this->bod_seredina =$this->get_modul(PAGINA_HTML.$_GET['option']);
+  
 }
 
-
-if (isset ($_GET['option']))  {  $this->bod_seredina =$this->get_modul($_GET['option']); }
-
-                      else  { $this->bod_seredina=$this->get_modul('home');} 
+else  {$this->xml_obj['slader']=new para_trab_XML($element['slader'],'slader');
+       $this->bod_seredina=$this->get_modul(PAGINA_HTML.'home');
+                               
+                      } 
 		
 
 $this->futer =PAGINA_HTML.'futer.php';
+
+
+//-------------------------------------------------------------------------------
+
 
 
  $user_agent = $_SERVER['HTTP_USER_AGENT'];
