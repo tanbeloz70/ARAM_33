@@ -41,15 +41,17 @@ Fortalece os músculos atrofiados." />
 </center>
 <?php include(  $asa->futer );?>
 
-
-
-
+<div id='korzina'   style ='display:none'>
+<?php 
+//include(  $asa->korzina);
+?>
+</div>
 
 
 <!--<LINK REL="stylesheet" TYPE="text/css" HREF="./STYLE/tabl_stil.css" />
 <LINK REL="stylesheet" TYPE="text/css" HREF="/ARAM_33/STYLE/style.css" />-->
  <script src="jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="msg.js"></script>
+<script type="text/javascript" src="./msg.js"></script>
 
 </body>
 </html>

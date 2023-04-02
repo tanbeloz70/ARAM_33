@@ -1,11 +1,74 @@
 <?php
+class korzina_todo{
+  public function __construct (){
+   $this->mal='shopping-basket.png';
+   $this->kol=0;
+  // $this->tovar=array();
+   $this->blok="<img src='./PIC/shopping-basket.png'  title='COMPRAR.ARAM.SUPLUMENTUS'   style='float:left;width:20px;height:20px'/>";
+   session_start();
+  
+
+ }
+
+ public function set_korz_($id,$koisa){
+ 
+  if (!isset($_SESSION['tovar'])){ $_SESSION['tovar']=array(); }
+
+  $_SESSION['tovar'][$id]['kol']=1;
+
+   foreach (vivod_korz as $pola){
+  
+    $_SESSION['tovar'][$id][$pola]=$koisa[$pola]; 
+     }
+ 
+  return  $_SESSION['tovar'];
+  }
+
+  public function set_korz_minus_plus($id,$znak){
+  
+  if ($znak=="+") { $_SESSION['tovar'][$id]['kol']=$_SESSION['tovar'][$id]['kol']+1;}
+    
+           else {$_SESSION['tovar'][$id]['kol']=$_SESSION['tovar'][$id]['kol']-1;}
+              
+ return  $_SESSION['tovar'][$id]['kol'];
+      }
+    
+
+
+
+
+  public function get_korz_(){
+    
+
+    $vivod_korzini=$_SESSION['tovar'];
+
+    foreach  ($vivod_korzini as $id=>$val){ 
+    $vivod_korzini[$id]['imj_jpg']="<img src='./PARA_LOJA/SUPLUMENTOS/pic/". $_SESSION['tovar'][$id]['imj_jpg'].
+    "'  title='Visualização rápida_". $_SESSION['tovar'][$id]['imj_jpg']."' > </img>";
+
+    $vivod_korzini[$id]['kol']="<input type='button' name='knopka' value='-'   id='korzina_".$id."' />"
+    ."<b id='coisas_".$id."'>".$_SESSION['tovar'][$id]['kol']."</b> coisas  <input type='button' name='knopka' value='+'   id='korzina_".$id."'   />";
+                          //   <input type='submit' name='Pagar' style='width:200px' value='Total a pagar' />";
+    }
+   
+
+ //   $vivod_korzini['script']['44']= "<script> var elem = " + '"input[name*=' + "'knopka']" + '";' +
+//    "$(elem).click(function() { 
+//alert($(this).attr('" + "id'));
+//}); </script>";
+   
+    return $vivod_korzini;
+  }
+
+
+}
 class para_trab_XML{
 public function __construct ($vall,$key){
  
 
   $this->get_dad_($vall);
-  $this->dado=$this->read_xml_document();
- // print_r($this->dado);
+  $this->dado=$this->read_xml_document($key);
+//print_r($this->dado);
   //echo "<br>";
   $this->$key=$this->get_Shablon_();
 
@@ -13,9 +76,10 @@ public function __construct ($vall,$key){
 }
 
 public function get_dad_($vall){
+
   foreach ($vall as $key=>$vallos){
     $this->$key=$vallos;
-  // echo "key= ".$key." = ";
+  //echo "key= ".$key." = ";
    //print_r ($vallos);
    // echo "<br>-------";
 }
@@ -34,34 +98,29 @@ return $res;
 }
 
 
-public function read_xml_document(){
-  //  echo "#######=". $this->nazn."<br>";
+public function read_xml_document($key){
     $res=0;
     $pagina=array();
     if (file_exists($this->nazn)) 
-       {  include ($this->nazn);
-       //echo $xmlstr;
-          //echo $para_menu;
-          $movies = new SimpleXMLElement($xmlstr);
-        //print_r($movies);
-          foreach ($movies as $responda){
-
-         // if ($responda->attributes($this->campo_umova)==$this->tip)
-
-          foreach( $responda->attributes() as $key=>$value ){ 
-                              
-                              $pagina[ ((string) $responda[$this->key_primeira])][$key]=(string)$value ;
-
-  //                            echo "parsing  :".  ((string)[$num])." ".$key."=".(string)$value."<br>" ;
-
-
-          }
-        }
-    }                     
+       { 
+         $reader = new XMLReader();
+         $reader->open($this->nazn); 
+        
+           while ($reader->read()) {
+           
+            if ($reader->nodeType>0){
+              if($reader->hasAttributes){
+                      $key_id=$reader->getAttribute($this->key_primeira);
+                      while($reader->moveToNextAttribute())
+                          {$pagina[$key_id][$reader->name] = $reader->value;}
+                 }
+                }
+              }
+           
+           
+  }                  
     {$this->erro[0] ="file para menu nao exist, proquras diretoriu para menu "; }
 
-   // echo "****************=";
- //print_r($pagina);
 return ( $pagina);
 
 }
@@ -71,17 +130,13 @@ return ( $pagina);
 //adisionar --protokol list keys, oredem 
 //$dadosh-- array dados todos
 public function get_Shablon_() {
-  
-  $res1="";
- 
- foreach ($this->dado as $dad)
-  { $i=0;
-
-     
+    $res1="";
+    foreach ($this->dado as $dad)
+      { $i=0;
       foreach($this->campos as $value)
          { 
-          
-          $s[$i]=$dad[$value];$i=$i+1;
+          $s[$i]=$dad[$value];
+          $i=$i+1;
         
         
         
@@ -115,14 +170,8 @@ public function write_xml_document($p_menu,$num){
 }
 
 class  Acore {
-protected  function get_modul($modul){
-	//if ($modul=='por_loja')
-    {
-	//$pagina_modul=para_suplumentos.$_GET['id'].".php";
-	
-	}
-	
-//	else
+public  function get_modul($modul){
+
    $pagina_modul=$modul.".php";;
 	
           
@@ -160,97 +209,201 @@ public function para_optio_select ($name_var,$options,$selection_key)
 public function __construct() 
 {
 
-include 'config.php';
-//$element_pagina= array('heder','slader'=>'home','loja'=>'loja');
-$element['heder']=array ('nazn'=>para_menu,'key_primeira'=>'name','campos'=>array('name','disri'),'put'=>PAGINA_HTML);
-$element['heder']['sablon'] ="<li><a href='index.php?option=%s' >%s</a></li> ";
-  
+ include 'config.php'; 
+//---------------------------------------------------------------------------------------------------------------------------
 
-$element['slader']=array ('nazn'=>para_pleer,'key_primeira'=>'num','campos'=>array('num','name_client'),'dod_file'=>para_pleer_txt_file.'client_');
-$element['slader']['sablon'] ="<li><div><div class='pich'><img src ='".para_pleer_foto."%s.webp'  > </img> </div><div class='divav'><h4>%s</h4>%s</div></div></li>";
-
-
-
-$element['loja']=array ('nazn'=>para_loja_suplumentos,'key_primeira'=>'id','campos'=>array('id','tovar','id','tip','name','name','tovar',
-'id','tip','imj_jpg','name','tovar','id','tip','name','sena'),'campo_umova'=>'tip');
-$element['loja']['sablon'] ="<div id='%s_'>
-     <a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' title='Visualização rápida_%s'><h3>%s</h3></a>
-     <a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' ><img src='./PARA_LOJA/SUPLUMENTOS/pic/%s'  title='Visualização rápida_%s' >
-	 </img></a><a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' title='Visualização rápida_%s'> <h4>%s</h4></a></div>";
-
- $element['loja_electro']=array ('nazn'=>para_loja_suplumentos,'key_primeira'=>'id','campos'=>array('id','tovar','id','tip','name','name','tovar',
-'id','tip','imj_jpg','name','tovar','id','tip','name','sena'),'campo_umova'=>'tip');
-$element['loja_electro']['sablon'] ="<div id='%s_'>
-<a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' title='Visualização rápida_%s'><h3>%s</h3></a>
-<a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' ><img src='./PARA_LOJA/SUPLUMENTOS/pic/%s'  title='Visualização rápida_%s' >
-</img></a><a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' title='Visualização rápida_%s'> <h4>%s</h4></a></div>";
-
-$element['loja_suplum']=array ('nazn'=>para_loja_suplumentos,'key_primeira'=>'id','campos'=>array('id','tovar','id','tip','name','name','tovar',
-'id','tip','imj_jpg','name','tovar','id','tip','name','sena'),'campo_umova'=>'tip');
-$element['loja_suplum']['sablon'] ="<div id='%s_'>
-<a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' title='Visualização rápida_%s'><h3>%s</h3></a>
-<a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' ><img src='./PARA_LOJA/SUPLUMENTOS/pic/%s'  title='Visualização rápida_%s' >
-</img></a><a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' title='Visualização rápida_%s'> <h4>%s</h4></a></div>";
-
-
-
-
-
-//-----------------------------------------------------------------------------------------------------------------------  
-// menu main incima
-   $this->xml_obj['heder']=new para_trab_XML($element['heder'],'heder');
-   $key_s=$this->xml_obj['heder']->key_primeira;
-   echo "<br/>*****";
-   foreach ($this->xml_obj['heder']->dado as $key => $value){
-       if (isset ($value[pagina_object])) { $this->$key=$value[pagina_object];};
-       
-   }
 //--------------------------------------------------------------------------------------------------------------------
 
 
-if (isset ($_GET['tip'])) { $this->tip=$_GET['tip'];}
-$this->adress=adress;
+$element_pagina= array('slader'=>'home','loja'=>'loja_todo');
+$this->element['heder']=array ('nazn'=>para_menu,'key_primeira'=>'name','campos'=>array('name','disri'),'put'=>PAGINA_HTML);
+$this->element['heder']['sablon'] ="<li><a href='index.php?option=%s' >%s</a></li> ";
+  
+
+$this->element['slader']=array ('nazn'=>para_pleer,'key_primeira'=>'num','campos'=>array('num','name_client'),'dod_file'=>para_pleer_txt_file.'client_','put'=>PAGINA_HTML);
+$this->element['slader']['sablon'] ="<li><div><div class='pich'><img src ='".para_pleer_foto."%s.webp'  > </img> </div><div class='divav'><h4>%s</h4>%s</div></div></li>";
+
+
+
+$this->element['loja_todo']=array ('nazn'=>para_loja_suplumentos,'key_primeira'=>'id',
+'campos'=>array('id','tovar','id','tip','name','name',
+'id','name',
+'tovar','id','tip','imj_jpg','name',
+'tovar','id','tip','name','sena'),'put'=>PAGINA_HTML);
+$this->element['loja_todo']['sablon'] ="<div id='%s_todo'>
+     <a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' title='Visualização rápida_%s'><h3>%s</h3></a>
+     <a href='#korzina'  id='compra_todo_%s' title='Visualização rápida_%s'>".
+     //$korzina_kada->blok.
+     "<b> COMPRAR</b></a>
+     <a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' ><img src='./PARA_LOJA/SUPLUMENTOS/pic/%s'  title='Visualização rápida_%s' >
+	 </img></a><a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' title='Visualização rápida_%s'> <h4>%s</h4></a>
+   </div>";
+
+   $this->element['loja_electro']=array ('nazn'=>para_loja_suplumentos,'key_primeira'=>'id','campos'=>array('id','tovar','id','tip','name','name',
+ 'id','name',
+  'tovar','id','tip','imj_jpg','name','tovar','id','tip','name','sena'),'campo_umova'=>'tip','campo_val'=>'electro','put'=>para_suplumentos);
+  $this->element['loja_electro']['sablon'] ="<div id='%s_electro'>
+<a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' title='Visualização rápida_%s'><h3>%s</h3></a>
+<a href='#korzina'  id='compra_electro_%s' title='Visualização rápida_%s'><b> COMPRAR</b></a>
+<a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' ><img src='./PARA_LOJA/SUPLUMENTOS/pic/%s'  title='Visualização rápida_%s' >
+</img></a><a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' title='Visualização rápida_%s'> <h4>%s</h4></a></div>";
+
+$this->element['loja_suplum']=array ('nazn'=>para_loja_suplumentos,'key_primeira'=>'id','campos'=>array('id','tovar','id','tip','name','name',
+'id','name',
+'tovar','id','tip','imj_jpg','name','tovar','id','tip','name','sena'),'campo_umova'=>'tip','campo_val'=>'suplum','put'=>para_suplumentos);
+$this->element['loja_suplum']['sablon'] ="<div id='%s_suplum'>
+<a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' title='Visualização rápida_%s'><h3>%s</h3></a>
+<a href='#korzina'  id='compra_suplum_%s' title='Visualização rápida_%s'><b> COMPRAR</b></a>
+<a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' ><img src='./PARA_LOJA/SUPLUMENTOS/pic/%s'  title='Visualização rápida_%s' >
+</img></a><a href='index.php?option=".para_suplumentos."%s&id=%s&tip=%s' title='Visualização rápida_%s'> <h4>%s</h4></a></div>";
+
+
+
+//$this->korzina_kada=new korzina_todo();
+}
+
+
+
+
+
+
+
+
+
+ 
+} 
+//-------korzina----------------------------------------------------------------------------------------------------------------  
+//$korzina_kada=new korzina_todo();
+
+//---------------------------------------------------------------------------------------
+// menu main incima
+$asa=new Acore();
+//require_once('main.php');
+
+   $asa->xml_obj['heder']=new para_trab_XML($asa->element['heder'],'heder');
+   
+   foreach ($asa->xml_obj['heder']->dado as $key => $value){
+       if (isset ($value[pagina_object])) { 
+        $asa->$key=$value[pagina_object];
+       // echo "<br>key=".$key."=".$value[pagina_object];
+      
+      };
+       
+   }
+   
+
+
+if (isset ($_GET['tip'])) { $asa->tip=$_GET['tip'];}
+$asa->adress=adress;
 
 
 //------------------------upload modul----and create object for page------------------
-if (isset ($_GET['option']))  {
-  $mod=$_GET['option'];
-  if (isset($this->$mod)) {  $elem_pag=explode(",", $this->$mod);
+//
+if (isset ($_GET['option'])){
+      $mod=$_GET['option'];
+      if (array_key_exists($mod, $asa->xml_obj['heder']->dado))   { $stran=PAGINA_HTML;      }
+                              else $stran="";
+
+
+
+                            
+      if (isset($asa->$mod))  {
+        
+       $elem_pag=explode(",", $asa->$mod);
                             foreach ($elem_pag as $pag_val){
-                              if (isset($element[$pag_val])){
-                             $this->xml_obj[$pag_val]=new para_trab_XML($element[$pag_val],$pag_val);
-                            }}
-  
-                                                                  }
-  $this->bod_seredina =$this->get_modul(PAGINA_HTML.$_GET['option']);
+                          //    echo($pag_val)."=777<br>";
+                              if (isset($asa->element[$pag_val])){
+                                $asa->xml_obj[$pag_val]=new para_trab_XML($asa->element[$pag_val],$pag_val);
+                            }
+                          }
+                          //  $stran=$this->xml_obj[$pag_val]->put;
+                          }
+      else {      }
+                                                                                    
+      $asa->bod_seredina =$asa->get_modul($stran.$_GET['option']);
   
 }
 
-else  {$this->xml_obj['slader']=new para_trab_XML($element['slader'],'slader');
-       $this->bod_seredina=$this->get_modul(PAGINA_HTML.'home');
+else  {$asa->xml_obj['slader']=new para_trab_XML($asa->element['slader'],'slader');
+  $asa->bod_seredina=$asa->get_modul(PAGINA_HTML.'home');
                                
                       } 
 		
 
-$this->futer =PAGINA_HTML.'futer.php';
+                      $asa->futer =PAGINA_HTML.'futer.php';
 
 
 //-------------------------------------------------------------------------------
-
+//require_once('main.php');
 
 
  $user_agent = $_SERVER['HTTP_USER_AGENT'];
- $this->browser = 0;
-    if ( stristr($user_agent, 'MSIE') ) $this->browser = 1; // IE7
-    if ( stristr($user_agent, 'MSIE') ) $this->browser = 1; // IE6
-    if ( stristr($user_agent, 'MSIE') ) $this->browser = 1; // IE5
+ $asa->browser = 0;
+    if ( stristr($user_agent, 'MSIE') ) $asa->browser = 1; // IE7
+    if ( stristr($user_agent, 'MSIE') ) $asa->browser = 1; // IE6
+    if ( stristr($user_agent, 'MSIE') )  $asa->browser = 1; // IE5
+
+//unset($_SESSION);
+//unset($_SESSION['tovar']); 
+   
+   // $korzina_kada=new korzina_todo();
+ IF (isset ($korzina_kada) ){$korzina_kada=$_SESSION['korzina_kada'];}
+              else          {$korzina_kada=new korzina_todo();}
+ 
+if (isset ($_GET['id'])){
+
+  $id=$_GET['id'];
+  //session_start();
+ 
 
 
 
+ //foreach (vivod_korz as $pola){
+ //$korz_vivod[$pola]=$asa->xml_obj['loja_todo']->dado[$id][$pola];} 
+ 
+ $tovar=$korzina_kada->set_korz_($id,$asa->xml_obj['loja_todo']->dado[$id]);
+ $tovar_druk=$korzina_kada->get_korz_();
+//print_r($tovar);
+/* foreach  ($korzina_kada->tovar as $tovar){ 
 
+ foreach (vivod_korz as $pola){
+
+  
+  if ($pola=='imj_jpg')   {
+    $korzina_kada->tovar[$tovar['id']][$pola]="<img src='./PARA_LOJA/SUPLUMENTOS/pic/".$korzina_kada->tovar[$tovar['id']][$pola]."'  title='Visualização rápida_".$asa->korzina_kada->tovar[$tovar['id']][$pola]."' > </img>";}
+    $korzina_kada->$korz_vivod[$tovar['id']][$pola]=$korzina_kada->tovar[$tovar['id']][$pola];} 
+ }
+
+ */
+
+
+
+ //$vivod_inf_korzina=$korzina_kada->get_korz_(vivod_korz);
+ /*
+ $plus="<input type='button' name='knopka' value='+' >";
+ $minus="<input type='button' name='knopka' value='-' >";
+ if (isset($korzina->kol)){ $kol=$korzina->kol;}
+ else $kol=1;
+ $korz['quantidade']= $minus."  ".$kol." coisas   ". $plus.
+ "<input type='submit' name='Pagar' value='Total a pagar' />";  */
+
+
+ //print_r(json_encode($korz_vivod, true, 2));
+ print_r(json_encode($tovar_druk));
 }
 
- 
-} 
- 
+
+if (isset ($_GET['id_plus'])){
+    $knop=$_GET['id_plus'];
+    $val=$_GET['val'];
+    //if ($knop=='+') 
+    $kol=$korzina_kada->set_korz_minus_plus($knop,$val);
+    print_r(json_encode($kol));
+   //session_write_close();
+   // session_destroy();
+}
+
+
+
+
   ?>

@@ -1,10 +1,123 @@
 $(document).ready(function() {
-    //===================================================================
-    // $(":checkbox").click(function() {
 
-    //$('.slader').load(function() {
-    // alert('hello');
- /*   var el = $('.slader li');
+    $("#rozd_product li :has('a')").click(function() {
+        alert($(this).children('a').attr("href"));
+        s = $(this).children('a').attr("href");
+        $('.katalog').children('div').hide();
+        $('.katalog').children(s).show(300);
+        //$(s).show(300);
+    });
+
+
+    $('.katalog div a').click(function() {
+        //palavra compra
+        var elem1 = $(this).attr('id').substr(0, 6);
+        alert(elem1);
+        if (elem1 == 'compra') {
+            if ($(this).attr('id').substr(7, 4) == 'todo') {
+                alert('todo');
+                id = $(this).attr('id').substr(12, 5);
+                alert('id=' + id);
+            }
+            if ($(this).attr('id').substr(7, 7) == 'electro') {
+                alert('electro');
+                id = $(this).attr('id').substr(15, 5);
+                alert('id=' + id);
+            }
+            if ($(this).attr('id').substr(7, 6) == 'suplum') {
+                alert('suplum');
+                id = $(this).attr('id').substr(14, 5);
+                alert('id=' + id);
+            }
+
+
+            $.ajax({
+                type: "GET",
+                headers: { 'Access-Control-Allow-Origin': '' },
+                url: "modul_upravl.php",
+
+                // headers: { 'Access-Control-Allow-Origin': '' },
+                //  url: "valid_metod.php",
+                dataType: 'html',
+                data: {
+                    'id': id,
+                    'option': 'loja'
+                },
+                success: function(dato) {
+                    //alert('vxod');
+                    alert(dato);
+                    ss = JSON.parse(dato);
+                    // alert(ss);
+                    //  alert(ss.length);
+                    var stroka = "";
+
+                    for (key in ss) {
+                        id_tovar = 'korzina_id_' + key;
+                        $.each(ss[key], function(key1, value) {
+
+                            stroka = stroka + "<p>" + value + "</p>";
+
+
+                        });
+
+
+
+
+                        //   stroka = key + stroka +
+                        stroka = "<li>" + stroka + "</li><p><hr></p>";
+                        alert(stroka);
+                    }
+
+                    stroka = "<ul>" + stroka + "</ul>" + "<input type='submit' name='Pagar' style='width:200px' value='Total a pagar' />" +
+                        "<script type='text/javascript' src='kk.js'></script>";
+                    //alert()
+
+                    $('#korzina').html(stroka);
+                }
+
+            }).done(function() {
+
+                $('#korzina').show(300).animate({
+                    top: 160,
+                    right: 50,
+                    width: "400px",
+                    opacity: 1,
+                    height: "auto"
+
+
+                }, 300);
+
+            });
+        }
+    });
+});
+
+
+
+
+/* var elem = "select[name*='status_reclamacos_up']";
+ $(elem).change(function() {
+     var elem1 = $(this).attr('id').substr(3, ($(this).attr('id').length - 3));
+     var num1 = elem1.indexOf('_');
+     var num3 = elem1.substr(num1, (elem1.length - num1));
+     elem1 = elem1.substr(0, num1);
+
+     var elem2 = "input[id='recla_id" + elem1 + num3 + "']";
+
+     $(elem2).val(elem1);*/
+
+
+
+
+
+
+
+//===================================================================
+// $(":checkbox").click(function() {
+
+//$('.slader').load(function() {
+// alert('hello');
+/*   var el = $('.slader li');
     //  $('.slader li').hide();
     // $('.slader li:eq(0)').toggle(5000);
     var cord = $('.slader li:eq(0)').position();
@@ -44,9 +157,9 @@ $(document).ready(function() {
 //$('.katalog div a').click(function() {
 
 //	window.location.assign('http://localhost/ARAM_33/PARA_LOJA/SUPLUMENTOS/katalog_xml/suplum_4.xml');
-	
-	
-	
+
+
+
 //});
 
 
@@ -58,7 +171,7 @@ $(document).ready(function() {
 
 
 
-});
+//   });
 /*
         var musa = $(this).next('p');
 
@@ -530,3 +643,8 @@ $(document).ready(function() {
 
     //});
     */
+
+var elem = "#korzina input";
+$(elem).click(function() {
+    alert($(this).attr('" + "id'));
+});
