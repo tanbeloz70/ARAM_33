@@ -1,46 +1,27 @@
-<?xml version = "1.0"?> 
-<?xml-stylesheet type = "text/xsl" href = "http://localhost/ARAM_33/PARA_LOJA/SUPLUMENTOS/katalog_xml/suplumentos.xsl"?> 
-<catalog>
-<category  id="00006" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo "  name='ARTRONAT FLEX LÍQUIDO' 
-imj_jpg='http://localhost/ARAM_33/PARA_LOJA/SUPLUMENTOS/pic/00006_grand.webp' sena='20.00' promosao='no'>
-<suplimento_name>ARTRONAT FLEX LÍQUIDO</suplimento_name>
-<sena>20.00</sena>
-<Suplemento_Alimentar>
-O Artronat Flex Líquido é um suplemento com Colagénio, Glucosamina, Condroitina e Vitaminas.
+<div class='lojasoz'>
+<h1>ARTRONAT ADVANCE</h1><h2>Preço:22.00€</h2>
+<img src=<?php echo '"'.adress.'/PARA_LOJA/SUPLUMENTOS/pic/00006_grand.webp"';?> title="aram.Sobralinho.ARTRONAT ADVANCE " alt="comprar ARTRONAT ADVANCE ">
 
+<div>
+Artronat Advance, da Natiris é uma solução avançada para articulações, cartilagens e ossos.
 
-A vitamina C contribui para a normal formação de colagénio, para a normal formação de colagénio e para o funcionamento normal das cartilagens.
+Artronat Advance fornece Ácido Hialurónico, Glucosamina e Condroitina, Colagénio, MSM, Boswellia e Curcuma, Gengibre e Piperina, Vitaminas e Minerais.
+</div>
+<div>A Boswellia serrata ajuda a manter as articulações frescas e confortáveis.</div>
+<div>A vitamina C contribui para a normal formação de colagénio para funcionamento normal dos ossos.</div>
+<div>O manganês, o zinco, a vitamina D e a vitamina K contribuem para a manutenção de ossos normais.</div>
+<div>Ingraedientes:POR 2 COMPRIMIDOS: 1000 mg Sulfato de glucosamina, 650 mg Sulfato de condroitina derivado de fermentação microbiana e de sulfatação, 600 mg Metilsulfonilmetano (MSM) , Agente de volume: Celulose microcristalina, 100 mg Extrato de Boswellia (Boswellia serrata), resina, 100 mg Extrato de curcumina (Curcumina longa), raiz, 100 mg Extrato de gengibre (Zingiber officinale), raiz, 90 mg Ácido ascórbico, Antiaglomerantes: Dióxido de silício (silica), Sais de magnésio de ácidos gordos, Agente de revestimento: Hipromelose, Estabilizador: Polivinilpirrolidona, 40 mg Colagénio II, Agente de revestimento: Álcool polivinílico, Agente de volume: Croscarmelose de sódio, Agentes de revestimento: Dióxido de titânio, Polietilenoglicol, 16 mg Niacina (nicotinamida), Agentes de revestimento: Polidextrose, Talco, 10 mg Piperina, 8 mg Zinco (Óxido), Corante: Óxido de ferro amarelo, 5 mg Hialuronato de sódio, Estabilizadores: Maltodextrina, Amido de milho, Hipromelose, 2500 µg Vitamina A (Acetato de retinol), 1,7 mg Vitamina B6 (Cloridrato de piridoxina), 1,5 mg Manganês (Sulfato), 1,3 mg Vitamina B2 (Riboflavina), 1,2 mg Vitamina B1 (Mononitrato de tiamina), 900 µg Cobre (Óxido), Estabilizador: Carboximetilcelulose de sódio, 400 µg folato (ácido (6S)-5-metiltetra-hidrofólico), sal de glucosamina, Estabilizador: Fosfato de cálcio, Acidificante: Ácido tartárico, 55 µg Selénio (Selenito de sódio), 30 µg Vitamina K (Fitometadiona), 25 µg Vitamina D (Colecalciferol), 25 µg Vitamina B12 (Cianocobalamina).
+</div>
+<div>Modo de Tomar/Usar:
 
+Tomar 2 comprimidos por dia, com um copo de água grande.
+</div>
+<div>Menções Complementares:
 
-A vitamina D contribui para a normal absorção/utilização do cálcio e do fósforo, para níveis normais de cálcio no sangue e para a manutenção do normal funcionamento muscular.
-
-
-A vitamina B6 contribui para o metabolismo normal das proteínas e do glicogénio.
-
-
-O zinco contribui para a síntese normal das proteínas.
-</Suplemento_Alimentar>
-<Ingredientes>Por 30 ml: Água purificada, Xarope invertido de beterraba, 15000 mg Sulfato de condroitina, 1500 mg Sulfato de glucosamina, 50 mg Licopeno,
- 50 mg Cavalinha, 35 mg Colagénio (origem vegetal), 1000 UI (75%*)Vitamina A (beta-caroteno); 150 mg (187,5%*) Vitamina C; 200 UI (100%*) Vitamina D3 (colecalciferol); 
-1,95 mg (177,3%*) Vitamina B1; 2,25 mg (160,7%*) Vitamina B2; 40 mg (250%*) Vitamina B3; 20 mg (333,3%*) Vitamina B5; 2,1 mg (150%*) Vitamina B6; 3,6 µg (144%*) 
-Vitamina B12; 10 mg (100%*) Zinco; Pectina (fibras de limão); Goma de guar (sementes de Guar); Ácido cítrico; Sorbato de potássio; Aromas naturais de ananás e de manga. 
-*VRN -. Valor de Referência do Nutriente
-</Ingredientes>
-<Alergenios>n/a
-
-Conservar em ambiente seco e fresco, ao abrigo da luz solar.
+Os suplementos alimentares não devem ser utilizados como substitutos de um regime alimentar variado, equilibrado e de um estilo de vida saudável.
 Manter fora do alcance das crianças.
-Não deve ser excedida a toma diária indicada.
-Este produto não substitui um regime alimentar variado.
-Mulheres grávidas ou a amamentar não devem utilizar este suplemento.
-Agitar antes de usar.
-Não recomendado em caso de hipersensibilidade ou alergia a qualquer um dos constituintes da formulação.
-Recomendada precaução no caso de toma de Varfarina.
-Não recomendado em caso de alergia a marisco ou seus derivados.
-Não recomendado em caso em doentes com úlcera gástrica ou duodenal e inflamação gástrica.</Alergenios>
-<Modo_de_Tomar>Adultos: Tomar 30 ml por dia, em jejum, preferencialmente de manhã.
- </Modo_de_Tomar>
-<Contem></Contem>
-<Apresentacao>500 ml</Apresentacao>
-</category>
-</catalog>
+Se estiver a tomar alguma especialidade farmacêutica ou se sofre de alguma doença, consulte o seu médico ou técnico de saúde antes de tomar qualquer suplemento.</div>
+<div>Peso Líquido:
+
+106 Gramas</div>
+</div>

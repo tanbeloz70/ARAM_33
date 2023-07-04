@@ -1,26 +1,29 @@
 <div class="zastavka">
-    <h1>ARAM.
+    <h1>ARAM.</h1>
 
-      Saúde e reabilitação motora através de  movimentos  ativos  e  passivos, fisioterapia,  massagem  e  nutrição.
+      <H2>Saúde e reabilitação motora através de  movimentos  ativos  e  passivos, fisioterapia,  massagem  e  nutrição.</H2>
 
-       OFERECEMOS TERAPIAS PERSOALIZADAS CRIADAS CUIDADOSAMENTE PARA ATENDER AS NECESIDADES ESPECIFICAS DE CADA UM DOS NOSSOS PACIENTES.
-</h1></div>
+       <H3>OFERECEMOS TERAPIAS PERSOALIZADAS CRIADAS CUIDADOSAMENTE PARA ATENDER AS NECESIDADES ESPECIFICAS DE CADA UM DOS NOSSOS PACIENTES.
+</H3></div>
 
-<div class="missao">
-<h2> MISSÃO ARAM</h2>
-<H3>
-Mudar a forma como a saúde é entendida, usando movimento, alimentação e os suplementos adequados
-</H3>
+<div>
+<h1>NOSSA MISSÃO</h1>
 
-<span class="boton">LOJA. ENCONTRE O SEU SUPLEMENTO</span>
-<img src="./PIC/Fisioterapia.jpg" alt="aram.fisioterapia" title="tratamento aram"/>
+<h2>Mudar a forma como a saúde é entendida, usando movimento, alimentação e os suplementos adequados.</h2>
+
+
+<h4 class="boton"> LOJA. ENCONTRE O SEU SUPLEMENTO</h4>
+<img src="./PIC/Fisioterapia.jpg" alt="aram.fisioterapia" title="tratamento aram"  ></img>
 </div>
 
-<div class='slader'>
+<div>
 <h1>Testemunhos </h1>
-<ul>
+<div class='slader'>
 <?php echo     $asa->xml_obj['slader']->slader;                     ?>
-</ul>
+
 <p id='pontos'  >. . .</p>
+
+
+</div>
 
 </div>

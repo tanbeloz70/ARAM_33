@@ -1,5 +1,5 @@
 <div class='lojasoz'><h1>ARTRONAT FLEX </h1><h2>22.00</h2>
-<img src="http://localhost/ARAM_33/PARA_LOJA/SUPLUMENTOS/pic/00002_grand.webp" title="ARTRONAT FLEX " alt="ARTRONAT FLEX ">
+<img src=<?php echo '"'.adress.'/PARA_LOJA/SUPLUMENTOS/pic/00002_grand.webp"';?> title="ARTRONAT FLEX " alt="ARTRONAT FLEX ">
 
 <div>
 O Artronat Flex Saquetas é um suplemento com Colagénio, Glucosamina, Condroitina e Vitamina C.

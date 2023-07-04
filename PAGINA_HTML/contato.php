@@ -25,6 +25,7 @@
 <textarea placeholder="Escreva a sua mensagem..."></textarea>
 <input type="submit" value="ENVIAR"/>
 
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 </form>
 

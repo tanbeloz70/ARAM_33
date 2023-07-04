@@ -34,16 +34,18 @@ Fortalece os músculos atrofiados." />
 
 <center>
 <?php 
-echo $asa->bod_seredina;
+//echo $asa->bod_seredina;
  include($asa->bod_seredina); 
 
 ?>
 </center>
 <?php include(  $asa->futer );?>
 
-
-
-
+<div id='korzina'   style ='display:none'>
+<?php 
+//include(  $asa->korzina);
+?>
+</div>
 
 
 <!--<LINK REL="stylesheet" TYPE="text/css" HREF="./STYLE/tabl_stil.css" />

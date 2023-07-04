@@ -1,5 +1,5 @@
 <div class='lojasoz'><h1>ARTRONAT RAPID</h1><H2>16.00</H2>
-<img src="http://localhost/ARAM_33/PARA_LOJA/SUPLUMENTOS/pic/00003_grand.webp" title="aram.ARTRONAT RAPID " alt="aram.COMPAR ARTRONAT RAPID"/>
+<img src=<?php echo '"'.adress.'/PARA_LOJA/SUPLUMENTOS/pic/00003_grand.webp"';?> title="aram.ARTRONAT RAPID " alt="aram.COMPAR ARTRONAT RAPID"/>
 
 <DIV>
 O Artronat Rapid é um suplemento alimentar com Glucosamina, Condroitina, MSM (Metil Sulfonil Metano) e Vitamina C.

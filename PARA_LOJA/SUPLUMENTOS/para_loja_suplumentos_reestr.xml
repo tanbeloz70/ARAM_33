@@ -1,12 +1,87 @@
-<?xml version = "1.0"?> 
-<?xml-stylesheet type = "text/xsl" href = "para_loja_suplumentos_reestr.xsl"?> 
+<?xml version="1.0" standalone="yes"?>
 <catalog>
-<category  id="00001" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo "  name='GINKGOBIL | 20 X 15ML AMPOLAS ' 
-imj_jpg='./pic/1m.jpg' sena='10.00' promosao='no'>
+<category  id="00001" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo " 
+ name='ARTRONAT FLEX GEL' 
+imj_jpg='1m.webp' sena='22.00' promosao='no' tovar='suplum_00001'>
 </category>
-<category  id="00002"  kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='GINKGOBIL | 60 CAPSULAS'  
-imj_jpg='./pic/2m.jpg' sena='20.00'  promosao='yyy'>
+<category  id="00002"  tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" 
+name='ARTRONAT FLEX'  
+imj_jpg='2m.webp' sena='22.00'  promosao='yyy' tovar='suplum_00002'>
 </category>
- <category id="00003"  kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='MIGRADIM | 60 CAPSULAS' 
-imj_jpg='./pic/3m.jpg' sena='30.00'   promosao='no'></category>
+ <category id="00003" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo"
+ name='ARTRONAT RAPID' 
+imj_jpg='3m.webp' sena='16.00'   promosao='no'  tovar='suplum_00003'></category>
+<category id="00004"  tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo"
+ name='ARTRONAT FLEX LÍQUIDO' 
+imj_jpg='4m.webp' sena='20.00'   promosao='no'   tovar='suplum_00004'></category>
+<category id="00006" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='ARTRONAT ADVANCE' 
+imj_jpg='6m.webp' sena='20.00'   promosao='no'  tovar='suplum_00006'></category>
+<category id="00007" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='MAG ADVANCE' 
+imj_jpg='7m.webp' sena='14.00'   promosao='no'  tovar='suplum_00007'></category>
+<category id="00008" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='JUVENTUS MSM' 
+imj_jpg='8m.webp' sena='24.00'   promosao='no'  tovar='suplum_00008'></category>
+<category id="00009" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='REUMADOL – 30 SAQUETAS' 
+imj_jpg='9m.webp' sena='30.00'   promosao='no'  tovar='suplum_00009'></category>
+<category id="00010" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='REUMADOL EXTRA FORTE' 
+imj_jpg='10m.webp' sena='36.00'   promosao='no'  tovar='suplum_00010'></category>
+<category id="00011" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='REUMADOL GOLD' 
+imj_jpg='11m.webp' sena='30.00'   promosao='no'  tovar='suplum_00011'></category>
+<category id="00012" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='REUMADOL FORTE' 
+imj_jpg='12m.webp' sena='30.00'   promosao='no'  tovar='suplum_00012'></category>
+<category id="00013" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='URATO COMPLEX SOVEX' 
+imj_jpg='13m.webp' sena='13.00'   promosao='no'  tovar='suplum_00013'></category>
+<category id="00014" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='SULFATO DE GLUCOSAMINA 1500 MG' 
+imj_jpg='14m.webp' sena='12.00'   promosao='no'  tovar='suplum_00014'></category>
+<category id="00015" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='HARPAGO COMPLEX SOVEX' 
+imj_jpg='15m.webp' sena='30.00'   promosao='no'  tovar='suplum_00015'></category>
+<category id="00016" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='SUPER CÁLCIO e MAGNÉSIO' 
+imj_jpg='16m.webp' sena='10.00'   promosao='no'  tovar='suplum_00016'></category>
+<category id="00017" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='GELATINATO' 
+imj_jpg='17m.webp' sena='23.00'   promosao='no'  tovar='suplum_00017'></category>
+<category id="00018" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='GLUCOSAMINA 500mg e CONDROITINA 400mg' 
+imj_jpg='18m.webp' sena='15.00'   promosao='no'  tovar='suplum_00018'></category>
+<category id="00019" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='CARTILAGENS COMPLEX SOVEX' 
+imj_jpg='19m.webp' sena='22.00'   promosao='no'  tovar='suplum_00019'></category>
+<category id="00020" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='BROMELAÍNA COMPLEX SOVEX' 
+imj_jpg='20m.webp' sena='20.00'   promosao='no'  tovar='suplum_00020'></category>
+<category id="00021" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='KONDROSAMINA MSM RAPID' 
+imj_jpg='21m.webp' sena='35.00'   promosao='no'  tovar='suplum_00021'></category>
+<category id="00022" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='COLCHURIC' 
+imj_jpg='22m.webp' sena='20.00'   promosao='no'  tovar='suplum_00022'></category>
+<category id="00023" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='COLLAFORCE FISIO' 
+imj_jpg='23m.webp' sena='17.00'   promosao='no'  tovar='suplum_00023'></category>
+<category id="00024" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='CARTILOGEN ELASTIC' 
+imj_jpg='24m.webp' sena='25.00'   promosao='no'  tovar='suplum_00024'></category>
+<category id="00025" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='CARTILOGEN MUSCULOS' 
+imj_jpg='25m.webp' sena='24.00'   promosao='no'  tovar='suplum_00025'></category>
+<category id="00026" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='GLUCOSAMINA + CONDROITINA FORTE' 
+imj_jpg='26m.webp' sena='29.00'   promosao='no'  tovar='suplum_00026'></category>
+<category id="00027" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='COLLAFORCE OSTEO' 
+imj_jpg='27m.webp' sena='25.00'   promosao='no'  tovar='suplum_00027'></category>
+<category id="00028" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='COLAGENIO COM MAGNESIO 600MG' 
+imj_jpg='28m.webp' sena='8.00'   promosao='no'  tovar='suplum_00028'></category>
+<category id="00029" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='GLUCOSAMINA + CONDROITINA' 
+imj_jpg='29m.webp' sena='20.00'   promosao='no'  tovar='suplum_00029'></category>
+<category id="00030" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='KONDROSAMINA MSM RAPID' 
+imj_jpg='30m.webp' sena='23.00'   promosao='no'  tovar='suplum_00030'></category>
+<category id="00031" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='SILICIO COM CAVALINHA PLUS' 
+imj_jpg='31m.webp' sena='20.00'   promosao='no'  tovar='suplum_00031'></category>
+<category id="00032" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='INFLADOL DUO' 
+imj_jpg='32m.webp' sena='30.00'   promosao='no'  tovar='suplum_00032'></category>
+<category id="00033" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='AGIFLEX' 
+imj_jpg='33m.webp' sena='28.00'   promosao='no'  tovar='suplum_00033'></category>
+<category id="00034" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='BOSWELLIA + CURCUMINA' 
+imj_jpg='34m.webp' sena='18.00'   promosao='no'  tovar='suplum_00034'></category>
+<category id="00035" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='AGIFLEX' 
+imj_jpg='35m.webp' sena='15.00'   promosao='no'  tovar='suplum_00035'></category>
+<category id="00036" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='COLLAFORCE SUPER + CURCUMA 10 000' 
+imj_jpg='36m.webp' sena='26.00'   promosao='no'  tovar='suplum_00036'></category>
+<category id="00037" tip="suplum" kategor="Nervoso central" sistema="Dietmed" kategor_all="Nervoso central,Circulatorio,Digestivo" name='CARTILOGEN ALÍVIO IMEDIATO' 
+imj_jpg='37m.webp' sena='18.00'   promosao='no'  tovar='suplum_00037'></category>
+<category id="00041" tip="electro" kategor="Nervoso central" sistema="electro" kategor_all="Nervoso central,Circulatorio,Digestivo" name='T-One Coach' 
+imj_jpg='41m.webp' sena='259.00'  promosao='no'  tovar='electro_00041'></category>
+<category id="00042"  tip="electro" kategor="Nervoso central" sistema="electro" kategor_all="Nervoso central,Circulatorio,Digestivo" name='T-One Coach' 
+imj_jpg='42m.webp' sena='285.00'   promosao='no'  tovar='electro_00042'></category>
+<category id="00043" tip="electro" kategor="Nervoso central" sistema="electro" kategor_all="Nervoso central,Circulatorio,Digestivo" name='T-One Coach' 
+imj_jpg='43m.webp' sena='389.00'  promosao='no' tovar='electro_00043'></category>
 </catalog>

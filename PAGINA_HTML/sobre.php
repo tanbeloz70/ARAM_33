@@ -1,6 +1,6 @@
-<div class="missao">
-
 <div>
+
+<div class="loja1">
   <h6>ARAM.KINESIOTERAPIA</h6>
   <h1>A nossa prioridade é restabelecer a sua saúde e bem-estar. </h1>
   <div>
@@ -105,7 +105,8 @@ Tenho 38 anos e venho de Lisboa. Adoro viajar e praticar surf e Jiu Jitsu brasil
 sendo deste último treinador reconhecido pelo IPDJ.
 Na área das terapias, fiz curso de Balneoterapia na EMMA (escola de massagem e motricidade aplicada), mas toda a experiéncia
  de trabalho é em massagem terapeutica e desportiva com vista á recuperação muscular e alívio da dor</div>
-<div><img src="./PIC/Foto_Nastia.webp" alt="Foto.Aram"/>Anastasiia Kosares
+<div><img src="./PIC/Foto_Nastia.webp" alt="Foto.Aram"/>
+Anastasiia Kosares
 Recepcionista ARAM desde 2019
 Assistente administrativo em ARAM desde 2019.
 Gosta de jogar voleibol e viajar. Sempre pronta para ajudar e disponível para tirar qualquer dúvida ou fazer uma marcação.</div>

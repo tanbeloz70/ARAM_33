@@ -1,6 +1,6 @@
 <div class='lojasoz'>
-<h1>ARTRONAT FLEX GEL </h1><h2>Preço:22.00€</h2>
-<img src="http://localhost/ARAM_33/PARA_LOJA/SUPLUMENTOS/pic/00001_grand.webp" title="ARTRONAT FLEX " alt="ARTRONAT FLEX ">
+<h1>ARTRONAT FLEX GELkkk </h1><h2>Preço:22.00€</h2>
+<img src=<?php echo '"'.adress.'/PARA_LOJA/SUPLUMENTOS/pic/00001_grand.webp"';?> title="ARTRONAT FLEX " alt="ARTRONAT FLEX ">
 
 <div>
 Suplemento_Alimentar:Artroflex Gel é um gel tópico de alta qualidade, concebido para aliviar as dores musculares e articulares. Quando se massaja

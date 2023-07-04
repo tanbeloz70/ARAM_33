@@ -1,16 +1,20 @@
 <?php 
-define ('para_menu','./PARA_MENU_INCIMA/menu_pagin.php');
 
-define ('adress','http://localhost/ARAM_33/');
+
+define ('para_menu','./PARA_MENU_INCIMA/menu_pagin.xml');
+define ('pagina_object','pagina_object');
+//define ('adress','http://localhost/ARAM_33/');
+define ('adress','http://localhost/portugal_trabalhar/ARAM_33/');
 define ('PAGINA_HTML','./PAGINA_HTML/');
 
-define ('para_pleer','./client/para_pleer_visitar_obrigado.php');
+define ('para_pleer','./client/para_pleer_visitar_obrigado.xml');
 define ('para_pleer_txt_file','./client/texto_obrigado/');
 define ('para_pleer_foto','./client/foto/');
 
-define ('para_loja_suplumentos','./PARA_LOJA/SUPLUMENTOS/para_loja_suplumentos_reestr.php');
-define ('para_suplumentos','./PARA_LOJA/SUPLUMENTOS/katalog_xml/suplum_');
+define ('para_loja_suplumentos','./PARA_LOJA/SUPLUMENTOS/para_loja_suplumentos_reestr.xml');
+define ('para_suplumentos','./PARA_LOJA/SUPLUMENTOS/katalog_xml/');
 define ('para_sxl','./PARA_LOJA/SUPLUMENTOS/katalog_xml/suplumentos.xsl');
+define ('vivod_korz',array('name','sena','promosao','imj_jpg'));
 //----para xml----
 /*define('element_pagina', array('heder','slader','loja'));
 
