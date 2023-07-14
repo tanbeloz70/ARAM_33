@@ -25,7 +25,8 @@
 
 <?php $options=array("Selecionar"=>'Selecionar por',"Mais"=>'Mais por',"Preco1"=>'Preço (menor ao maior)',
                       "Preco2"=>'Preço (maior ao menor)',"Nome1"=>'Nome A - Z',"Nome2"=>'Nome Z -A'); 
-    echo @$asa->para_optio_select ('select_name',$options,@$asa->param_post['select_name']); ?>
+                      
+    echo out_like::para_optio_select ('select_name',$options,@$asa->param_post['select_name'],); ?>
 </form>
 </div>
 
@@ -33,10 +34,10 @@
 <h1>Se precisa de ajuda para escolher o seu produto não hesite em nos contatar.</h1>
  
 
-<div id='loja_todo'> <?php echo ( @$asa->xml_obj['loja_todo']->loja_todo);  ?> </div>
+<div id='loja_todo'> <?php echo ( @$asa_xml_obj['loja_todo']->loja_todo);  ?> </div>
 
-<div id='loja_electro'  style="display: none;"><?php echo (@$asa->xml_obj['loja_electro']->loja_electro);  ?></div>
+<div id='loja_electro'  style="display: none;"><?php echo (@$asa_xml_obj['loja_electro']->loja_electro);  ?></div>
 
-<div id='loja_suplum'  style="display: none;"><?php echo ( @$asa->xml_obj['loja_suplum']->loja_suplum);  ?></div>
+<div id='loja_suplum'  style="display: none;"><?php echo ( @$asa_xml_obj['loja_suplum']->loja_suplum);  ?></div>
 
 </div>

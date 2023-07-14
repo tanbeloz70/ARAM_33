@@ -159,12 +159,35 @@ class korzina_todo{
 }
 
 //============class para_trab_XML
-//------------
+/* 
+* @author Bilozorova Tetiana tankaportugal@gmail.com 
+* @класс создания обьекта которому передаются свойства и их значения
+* с данными которые хранятся в хмл файле
+ * парсит хмл файл форматирует их для вывода
+* @return $this->dado -- массив товаров
+* @return $this->$key -- набор форматированных данных хмл файла для вывода
+* 
+*/
 class para_trab_XML{
-public function __construct ($vall,$key){
+
+public function get_dad_($key,$list_param,$sablon){
+
+  foreach ($list_param as $keys=>$vallos){
+    $this->$keys=$vallos;
+ 
+}
+   //$this->$key=$key;
+   $this->sablon=$sablon;
+
+
+}
+
+
+public function __construct ($key,$list_param,$sablon){
  
   //--формирую свойства обьекта
-   $this->get_dad_($vall);
+   
+   $this->get_dad_($key,$list_param,$sablon);
   // $dado =array();
   //--читаю хмл файл с данными обьекта , $key идентификатор (первичный ключ данных)
   $dado=$this->read_xml_document($key);
@@ -176,18 +199,14 @@ public function __construct ($vall,$key){
 
 }
 
-public function get_dad_($vall){
 
-  foreach ($vall as $key=>$vallos){
-    $this->$key=$vallos;
-  //echo "key= ".$key." = ";
-   //print_r ($vallos);
-   // echo "<br>-------";
-}
-}
+
+
 public function get_file_($num) {
-  $dir2=$this->dod_file.$num.'.txt';
-    //  echo  $dir2;
+  if (isset($this->dado[$num][$this->texto_file_name])) {$dir2=$this->onde.$this->dado[$num][$this->texto_file_name];}
+  else {$dir2=$this->dod_file.$num.'.txt';}
+
+ //echo  $dir2;
       $res="";   
           if (file_exists($dir2)) {
                      $handle = fopen($dir2, "r");
@@ -203,8 +222,7 @@ return $res;
 public function read_xml_document($key){
     $res=0;
     $pagina=array();
- //  if (isset ($this->campo_val)){}
-   //  else $filtr='';
+ 
     if (file_exists($this->nazn)) 
        { 
          $reader = new XMLReader();
@@ -215,12 +233,12 @@ public function read_xml_document($key){
             if ($reader->nodeType>0){
               if($reader->hasAttributes){
 
-                  //    $filtr_tip=$reader->getAttribute($this->campo_val);
+                  
                       $key_id=$reader->getAttribute($this->key_primeira);
-                   //   if (isset ($this->campo_val))
+                   
                       while($reader->moveToNextAttribute())
                           {
-                            //if ($this->campo_val==)
+                           
                             $pagina[$key_id][$reader->name] = $reader->value;
                           }
                  }
@@ -230,8 +248,7 @@ public function read_xml_document($key){
            
   }                  
   else   {$this->erro[0] ="file para menu nao exist, proquras diretoriu para menu "; }
-   //echo ('hhhhhhhhhhhhhhhhhhhhh');
-//print_r($pagina);
+   
 return ( $pagina);
 
 }
@@ -258,7 +275,7 @@ public function get_Shablon_() {
       if (isset($this->dod_file))
                          {   $s[$i]=  $this->get_file_($dad[$this->key_primeira]);   }
                           
-                   //
+                   
                   
                   
                   
@@ -274,9 +291,9 @@ public function get_Shablon_() {
      
          foreach($this->campos as $value)
          { 
-          $s[$i]=$dad[$value];
+          if (isset($dad[$value])){ $s[$i]=@$dad[$value];
           $i=$i+1;
-          }
+          }}
 
       if (isset($this->dod_file))
                          {   $s[$i]=  $this->get_file_($dad[$this->key_primeira]);   }
@@ -303,13 +320,32 @@ public function write_php_document($p_menu,$num){
 //---------------------------------------------
 }
 
+/*--class  Acore-------------------------------------------
+* @author Bilozorova Tetiana tankaportugal@gmail.com 
+* @ в данном случае наш сайт- ресурс выступает обьектом
+* @$this->element[](array) -- это свойства сайта, которые могут меняться( )
+* @ $this->element[]['sablon'] - форма отображения для текущего элемента
+* @nazn-> хмл файл который содержит данные обьекта 
+* @key_primeira -> первичный ключ атрибута файла хмл по котрому будет доступ к данным xml
+* @campos -> поля хмл файла (nazn) которые  будем использовать в sablon
+* @put -> адрес загружаемой страницы
+* 
+*-------------------------------------------------------------------
+ * @heder - заголовок сайта, который содержит меню (само меню находится в хмл файле)
+    * @элементы хедера тоже станут обьектами т е сайт обьект который в свою очередь состоит из обьектов
+    * (страниц сайта ) а страницы сайта могут иметь обьекты (слайдеры меню магазины  ит д. эта информация в хмл файле к каждому обьекту)
+    * @можно испльзовать в любом сайте , указываешь перечень в хмл файле, переменные в елементе и форму в шаблоне
+    * @заголовк обязателен,
+ *@-- эти элементы только для моего сайта у вас их может не быть
+ *@ slader - слайдер с отзывами ( реестр находится в хмл файле)
+ *@'loja_todo','loja_electro','loja_suplum' - данные в хмл файле-- для страницы магазина
+* ------------------------------------------------------------------------------
+*/
 class  Acore {
 public  function get_modul($modul){
 
-   $pagina_modul=$modul.".php";;
-	
-          
-       
+   $pagina_modul=$modul.".php";
+	  
   return       ( $pagina_modul);
 }
 
@@ -320,41 +356,34 @@ $kol=count($adisionar);
 
    
 }
+/*
+protected function kol_argum($arg_list,$element_name){
+  echo count($arg_list);
+ 
+  for ($i = 1; $i < count($arg_list)-1; $i++) 
+  {  $parama[$element_name][$arg_list[$i]]=$arg_list[$i]; }
+                    
+return $parama;
+                  }
+
+*/
 
 
-//=========================================================================================
-public function para_optio_select ($name_var,$options,$selection_key)
-  {
 
-   if (isset($this->para_forma)) {$para_form="form='".$this->para_forma."'";}
-             else {$para_form="";}
-    if ((!(isset($selection_key)))&&($selection_key!=='0')){$selection_key=array_key_first($options);}
-    $selecd="<select name='".$name_var."'      ".$para_form." >
-    <option value='".@$selection_key."' selected >".@$options[@$selection_key]."</option>";
-    foreach($options as $key=>$value)
-    { 
-      if ($key!==$selection_key) {$selecd.="<option value='".$key."' >".$value."</option>";}
-     
-    }
-    $selecd.="</select>";
-    return $selecd;
-  }
-  //========================================================================
+
+  //=====construct($element_name,$nazn,$key_primeira,$campos,$put)===================================================================
 public function __construct() 
 {
-
- include 'config.php'; 
-//---------------------------------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------------------------
-
-
-//$element_pagina= array('slader'=>'home','loja'=>'loja_todo');
+ $this->adress=adress;
+ $this->primeira_pagina='home';
+ 
 $this->element['heder']=array ('nazn'=>para_menu,'key_primeira'=>'name','campos'=>array('name','disri'),'put'=>PAGINA_HTML);
 $this->element['heder']['sablon'] ="<li><a href='index.php?option=%s' >%s</a></li> ";
   
 
-$this->element['slader']=array ('nazn'=>para_pleer,'key_primeira'=>'num','campos'=>array('num','name_client'),'dod_file'=>para_pleer_txt_file.'client_','put'=>PAGINA_HTML);
+$this->element['slader']=array ('nazn'=>para_pleer,'key_primeira'=>'num','campos'=>array('num','name_client','texto_file'),
+                        'dod_file'=>para_pleer_txt_file.'client_',
+                        'put'=>PAGINA_HTML,'texto_file_name'=>'texto_file','onde'=>para_pleer_txt_file);
 $this->element['slader']['sablon'] ="<div><figure><img src ='".para_pleer_foto."%s.webp'  ></img> <figcaption>%s %s</figcaption></figure></div>";
                 
 
@@ -364,7 +393,7 @@ $this->element['loja_todo']=array ('nazn'=>para_loja_suplumentos,'key_primeira'=
 'campos'=>array('id','tovar','name','name',
 'id','name',
 'tovar','tip','imj_jpg','name',
-'tovar','tip','name','sena'),'put'=>PAGINA_HTML);
+'tovar','tip','name','sena'),'put'=>para_suplumentos);
 $this->element['loja_todo']['sablon'] ="<div id='%s_todo'>
      <a href='index.php?option=".para_suplumentos."%s' title='Visualização rápida_%s'><h3>%s</h3></a>
      <a href='#korzina'  id='compra_todo_%s' title='Visualização rápida_%s' class='kompa'>".
@@ -393,93 +422,99 @@ $this->element['loja_suplum']['sablon'] ="<div id='%s_suplum'>
 </img></a><a href='index.php?option=".para_suplumentos."%s&tip=%s' title='Visualização rápida_%s'> <h4>%s</h4></a></div>";
 
 
-
-//$this->korzina_kada=new korzina_todo();
 }
-
-
-
-
-
-
-
-
 
  
 }  //end Acore
-//-------korzina----------------------------------------------------------------------------------------------------------------  
-//$korzina_kada=new korzina_todo();
+
+///----------------------------------------------------------------------------------
+class out_like extends  Acore{ 
+  static public function  para_optio_select ($name_var,$options,$selection_key)
+  {
+
+   if (isset($para_forma)) {$para_form="form='".$para_forma."'";}
+             else {$para_form="";}
+    if ((!(isset($selection_key)))&&($selection_key!=='0')){$selection_key=array_key_first($options);}
+    $selecd="<select name='".$name_var."'      ".$para_form." >
+    <option value='".@$selection_key."' selected >".@$options[@$selection_key]."</option>";
+    foreach($options as $key=>$value)
+    { 
+      if ($key!==$selection_key) {$selecd.="<option value='".$key."' >".$value."</option>";}
+     
+    }
+    $selecd.="</select>";
+    return $selecd;
+  }
+}
+
+
+
 
 //---------------------------------------------------------------------------------------
 // menu main incima
+
+
+
+//---------обьект весь ресурс - сайт
 $asa=new Acore();
-//require_once('main.php');
-
-   $asa->xml_obj['heder']=new para_trab_XML($asa->element['heder'],'heder');
-   //print_r($asa->xml_obj['heder']->heder);
 
 
-   foreach ($asa->xml_obj['heder']->dado as $key => $value){
-       if (isset ($value[pagina_object])) { 
-        $asa->$key=$value[pagina_object];
-      // echo "<br>key=".$key."=".$value[pagina_object];
-      
-      };
-       
-   }
+//------------------------создание головного меню
+//-------------------------------------------------------------------------
+$asa->header=PAGINA_HTML.'header.php';
+$asa_xml_obj['heder']=new para_trab_XML('heder',$asa->element['heder'],$asa->element['heder']['sablon']);   
+
+
+
+
+//------------------------upload modul----and create object for  page------------------
+$stran="";
+
+if (isset ($_GET['option']))
+   { $mod=$_GET['option'];}
+else{$mod=$asa->primeira_pagina;}
+
+if (isset($asa->element[$mod]))
+   {  $asa_xml_obj[$mod]=new para_trab_XML($mod,$asa->element[$mod],$asa->element[$mod]['sablon']);
+      $stran= $asa_xml_obj[$mod]->put; 
+     }
+
+  else{
+
+  if (isset($asa_xml_obj['heder']->dado[$mod]))   {
+                                         $stran=PAGINA_HTML;
+                                         if (isset($asa_xml_obj['heder']->dado[$mod][pagina_object]))
+                                         { 
+                                          $elem_pag=explode(",", $asa_xml_obj['heder']->dado[$mod][pagina_object]);
+                                          foreach ($elem_pag as $pag_val){   
+                                                  $asa_xml_obj[$pag_val]=new para_trab_XML($pag_val,$asa->element[$pag_val],$asa->element[$pag_val]['sablon']);
+                                          }
+                                          
+                                          } 
+
+    }
+     }
+ 
+                                            
+  $asa->bod_seredina =$asa->get_modul($stran.$mod);
    
+$asa->futer =PAGINA_HTML.'futer.php';		
+
+
 
 
 if (isset ($_GET['tip'])) { $asa->tip=$_GET['tip'];}
-$asa->adress=adress;
-
-
-//------------------------upload modul----and create object for page------------------
-//
-if (isset ($_GET['option'])){
-      $mod=$_GET['option'];
-      if (array_key_exists($mod, $asa->xml_obj['heder']->dado))   { $stran=PAGINA_HTML;      }
-                              else $stran="";
 
 
 
-                            
-      if (isset($asa->$mod))  {
-        
-       $elem_pag=explode(",", $asa->$mod);
-                            foreach ($elem_pag as $pag_val){
-                          //    echo($pag_val)."=777<br>";
-                              if (isset($asa->element[$pag_val])){
-                                $asa->xml_obj[$pag_val]=new para_trab_XML($asa->element[$pag_val],$pag_val);
-                            }
-                          }
-                          //  $stran=$this->xml_obj[$pag_val]->put;
-                          }
-      else {      }
-                                                                                    
-      $asa->bod_seredina =$asa->get_modul($stran.$_GET['option']);
-  
-}
 
-else  {$asa->xml_obj['slader']=new para_trab_XML($asa->element['slader'],'slader');
-  $asa->bod_seredina=$asa->get_modul(PAGINA_HTML.'home');
-                               
-                      } 
-		
 
-                      $asa->futer =PAGINA_HTML.'futer.php';
 
 
 //-------------------------------------------------------------------------------
-//require_once('main.php');
 
 
- $user_agent = $_SERVER['HTTP_USER_AGENT'];
- $asa->browser = 0;
-    if ( stristr($user_agent, 'MSIE') ) $asa->browser = 1; // IE7
-    if ( stristr($user_agent, 'MSIE') ) $asa->browser = 1; // IE6
-    if ( stristr($user_agent, 'MSIE') )  $asa->browser = 1; // IE5
-
+/*
 
 
 //--- создание или данные сессии----
@@ -550,5 +585,5 @@ if (isset ($_GET['Remove'])){
          unset($_SESSION['korzina_kada']);
         // unset($_SESSION['tovar']);
 }
-
+*/
   ?>

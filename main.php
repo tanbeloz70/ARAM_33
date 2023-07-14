@@ -26,7 +26,8 @@ Fortalece os músculos atrofiados." />
 <body>
   
       <?php 
-      include('PAGINA_HTML/header.php');
+      include($asa->header);
+   //   include('PAGINA_HTML/header.php');
       ?>
     
   

@@ -4,7 +4,7 @@
 </client>
 <client num='2' name_client ='João Saraiva Gomes' >
 </client>
-<client num='3' name_client ='Ana Ribeiro' >
+<client num='3' name_client ='Ana Ribeiro'  texto_file='anna_1.txt' >
 </client>
 <client num='4' name_client ='Susana Belo' >
 </client>

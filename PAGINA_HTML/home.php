@@ -19,7 +19,7 @@
 <div>
 <h1>Testemunhos </h1>
 <div class='slader'>
-<?php echo     $asa->xml_obj['slader']->slader;                     ?>
+<?php echo     $asa_xml_obj['slader']->slader;                     ?>
 
 <p id='pontos'  >. . .</p>
 

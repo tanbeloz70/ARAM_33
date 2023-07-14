@@ -21,7 +21,7 @@
 
 <div class='menu'><ul>
           <?php 
-          echo $asa->xml_obj['heder']->heder;
+          echo $asa_xml_obj['heder']->heder;
             ?>
           </ul>
           
