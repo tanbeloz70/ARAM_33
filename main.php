@@ -26,7 +26,7 @@ Fortalece os músculos atrofiados." />
 <body>
   
       <?php 
-      include($asa->header);
+      include($header);
    //   include('PAGINA_HTML/header.php');
       ?>
     
@@ -36,11 +36,11 @@ Fortalece os músculos atrofiados." />
 <center>
 <?php 
 //echo $asa->bod_seredina;
- include($asa->bod_seredina); 
+ include($bod_seredina); 
 
 ?>
 </center>
-<?php include(  $asa->futer );?>
+<?php include(  $futer );?>
 
 <div id='korzina'   style ='display:none'>
 <?php 

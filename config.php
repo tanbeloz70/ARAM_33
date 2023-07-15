@@ -1,10 +1,8 @@
 <?php 
-
-
 define ('para_menu','./PARA_MENU_INCIMA/menu_pagin.xml');
 define ('pagina_object','pagina_object');
 //define ('adress','http://localhost/ARAM_33/');
-define ('adress','http://localhost/portugal_trabalhar/ARAM_33/');
+define ('adress','http://localhost/portugal_trabalhar/ARAM_33');
 define ('PAGINA_HTML','./PAGINA_HTML/');
 
 define ('para_pleer','./client/para_pleer_visitar_obrigado.xml');

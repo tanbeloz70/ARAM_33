@@ -1,11 +1,43 @@
 <?php
-/* 
+/*--------------------------------------------
 * @author Bilozorova Tetiana tankaportugal@gmail.com 
-* класс для работы с товарной корзиной
+* @ 
+* @element[](array) -- это свойства сайта, которые могут меняться( )
+* @element[]['sablon'] - форма отображения для текущего элемента
+* @nazn-> хмл файл который содержит данные обьекта 
+* @key_primeira -> первичный ключ атрибута файла хмл по котрому будет доступ к данным xml
+* @campos -> поля хмл файла (nazn) которые  будем использовать в sablon
+* @put -> адрес загружаемой страницы
+* 
+*-------------------------------------------------------------------
+ * @heder - заголовок сайта, который содержит меню (само меню находится в хмл файле)
+    * @элементы хедера тоже станут обьектами т е сайт обьект который в свою очередь состоит из обьектов
+    * (страниц сайта ) а страницы сайта могут иметь обьекты (слайдеры меню магазины  ит д. эта информация в хмл файле к каждому обьекту)
+    * @можно испльзовать в любом сайте , указываешь перечень в хмл файле, переменные в елементе и форму в шаблоне
+    * @заголовк обязателен,
+ *@-- эти элементы только для моего сайта у вас их может не быть
+ *@ slader - слайдер с отзывами ( реестр находится в хмл файле)
+ *@'loja_todo','loja_electro','loja_suplum' - данные в хмл файле-- для страницы магазина
+* ------------------------------------------------------------------------------
+*/
+
+
+
+function get_modul($modul){
+  
+  $pagina_modul=$modul.".php";
+   
+ return       ( $pagina_modul);
+
+}
+//---------------------------------------------------------------------------------
+/* 
+* @korzina_todo - класс для работы с товарной корзиной
 * @return $this->tovar -- массив товаров
 * @return $this->kol -- количество товаров в корзине
 * @return $this->sum -- общая денежная сумма корзины
 */
+
 
 class korzina_todo{
   public function __construct (){  
@@ -69,15 +101,9 @@ class korzina_todo{
       }
     } 
   }
-  //     return  $this->tovar[$id]['kol'];
-
-
-
-  
- 
       }
  
-      
+ //--------------------------------------------------------------------------------------     
  public function delete_tovar($id,$znak){
   /* функция удалить вид товара из корзины
    *  $this->tovar--вся корзина- массив данных с ключами и данными
@@ -91,7 +117,7 @@ class korzina_todo{
 
       }
     }
-
+//----------------------------------------------------------------------
   public function get_korz_(){
     /* функция преобразование данных корзины для вывода
    *  
@@ -100,7 +126,7 @@ class korzina_todo{
 
    $vivod_korzini=array();
   
-    if ( (isset($this->tovar))| (!empty($this->tovar)))
+   if ( (isset($this->tovar))| (!empty($this->tovar)))
 
    {
     foreach  ($this->tovar as $id=>$val){
@@ -122,81 +148,70 @@ class korzina_todo{
     }
   }
 
-  //$vivod_korzini['summ_total']="<input type='submit' name='Pagar' style='width:200px' value='Total a pagar'  />" .
-  //                              "<b id='total'>" . $this->sum."euro </b>";
-  //$vivod_korzini['summ_total']=;
     return $vivod_korzini;
   }
 
-
+//-------------------------------------------------------------
   public function get_total_(){
-     $sum_total=0;
-    if (isset($this->tovar)){
-   
-   // print_r($this->tovar);
-    $kol=count ($this->tovar);
-   foreach  ($this->tovar as $id=>$val ){ 
+  $sum_total=0;
+  if (isset($this->tovar)){    $kol=count ($this->tovar);
+                                 foreach  ($this->tovar as $id=>$val ){ 
     
-      $sum_total=($this->tovar[$id]['sena']*$this->tovar[$id]['kol'])+$sum_total;
-  }}
-  $this->sum= $sum_total;
+                                  $sum_total=($this->tovar[$id]['sena']*$this->tovar[$id]['kol'])+$sum_total;
+                                  }
+                            }
+ // $this->sum= $sum_total;
   return $sum_total;
   }
-
+//------------------------------------------------------------
   public function get_total_kol(){
     $sum_total=0;
     if (isset($this->tovar)){
-    foreach  ($this->tovar as $id=>$var ){ 
-         $sum_total=($this->tovar[$id]['kol'])+$sum_total;
-  }
+                             foreach  ($this->tovar as $id=>$var )
+                               { $sum_total=($this->tovar[$id]['kol'])+$sum_total;  }
     }
-  $this->kol= $sum_total;
-  return $sum_total;
+   // $this->kol= $sum_total;
+    return $sum_total;
   }
 
 
 
-}
-
-//============class para_trab_XML
+} //end class korzina
+//-----------------------------------------------------------------------------------
+//------class para_trab_XML
 /* 
 * @author Bilozorova Tetiana tankaportugal@gmail.com 
-* @класс создания обьекта которому передаются свойства и их значения
-* с данными которые хранятся в хмл файле
+* @класс создания обьекта которому передаются данныe  в хмл файле
+* входной параметр массив  ключей хмл файла и переменная которая ей соответсвует
+* пример вывода меню: $element['heder']=array ('nazn'=>para_menu,'key_primeira'=>'name','campos'=>array('name','disri'),
+*    'put'=>PAGINA_HTML,'sablon' =>"<li><a href='index.php?option=%s' >%s</a></li>")
+* 'nazn','key_primeira','campos','put' - имена переменных  их менять нельзя
+* 'name','disri'-- поля водного хмл файла
+*  $element['sablon'] ---шаблон по которому формируется елемент для вывода на екран данными для него есть поля параметра: campos
  * парсит хмл файл форматирует их для вывода
 * @return $this->dado -- массив товаров
 * @return $this->$key -- набор форматированных данных хмл файла для вывода
 * 
 */
-class para_trab_XML{
+class para_trab_XML {
 
-public function get_dad_($key,$list_param,$sablon){
+public function get_dad_($list){
 
-  foreach ($list_param as $keys=>$vallos){
-    $this->$keys=$vallos;
- 
-}
-   //$this->$key=$key;
-   $this->sablon=$sablon;
-
-
+  foreach ($list as $keys=>$vallos){  $this->$keys=$vallos;}
 }
 
 
-public function __construct ($key,$list_param,$sablon){
+public function __construct ($key,$list){
  
   //--формирую свойства обьекта
-   
-   $this->get_dad_($key,$list_param,$sablon);
-  // $dado =array();
+     $this->get_dad_($list);
+  
   //--читаю хмл файл с данными обьекта , $key идентификатор (первичный ключ данных)
-  $dado=$this->read_xml_document($key);
+  $dado=$this->read_xml_document();
   if (count($dado)>0) {$this->dado=$dado;}
  
   //-- готовлю данные для вывода в нужном мне формате
   $this->$key=$this->get_Shablon_();
-
-
 }
 
 
@@ -206,7 +221,7 @@ public function get_file_($num) {
   if (isset($this->dado[$num][$this->texto_file_name])) {$dir2=$this->onde.$this->dado[$num][$this->texto_file_name];}
   else {$dir2=$this->dod_file.$num.'.txt';}
 
- //echo  $dir2;
+ 
       $res="";   
           if (file_exists($dir2)) {
                      $handle = fopen($dir2, "r");
@@ -214,12 +229,12 @@ public function get_file_($num) {
                       fclose($handle);    
 
 }
-//print_r($res);
+
 return $res;
 }
 
 
-public function read_xml_document($key){
+public function read_xml_document(){
     $res=0;
     $pagina=array();
  
@@ -320,116 +335,11 @@ public function write_php_document($p_menu,$num){
 //---------------------------------------------
 }
 
-/*--class  Acore-------------------------------------------
-* @author Bilozorova Tetiana tankaportugal@gmail.com 
-* @ в данном случае наш сайт- ресурс выступает обьектом
-* @$this->element[](array) -- это свойства сайта, которые могут меняться( )
-* @ $this->element[]['sablon'] - форма отображения для текущего элемента
-* @nazn-> хмл файл который содержит данные обьекта 
-* @key_primeira -> первичный ключ атрибута файла хмл по котрому будет доступ к данным xml
-* @campos -> поля хмл файла (nazn) которые  будем использовать в sablon
-* @put -> адрес загружаемой страницы
-* 
-*-------------------------------------------------------------------
- * @heder - заголовок сайта, который содержит меню (само меню находится в хмл файле)
-    * @элементы хедера тоже станут обьектами т е сайт обьект который в свою очередь состоит из обьектов
-    * (страниц сайта ) а страницы сайта могут иметь обьекты (слайдеры меню магазины  ит д. эта информация в хмл файле к каждому обьекту)
-    * @можно испльзовать в любом сайте , указываешь перечень в хмл файле, переменные в елементе и форму в шаблоне
-    * @заголовк обязателен,
- *@-- эти элементы только для моего сайта у вас их может не быть
- *@ slader - слайдер с отзывами ( реестр находится в хмл файле)
- *@'loja_todo','loja_electro','loja_suplum' - данные в хмл файле-- для страницы магазина
-* ------------------------------------------------------------------------------
-*/
-class  Acore {
-public  function get_modul($modul){
 
-   $pagina_modul=$modul.".php";
-	  
-  return       ( $pagina_modul);
-}
-
-
-public function get_analiz_($dadosh,$adisionar)
-{
-$kol=count($adisionar);
-
-   
-}
-/*
-protected function kol_argum($arg_list,$element_name){
-  echo count($arg_list);
- 
-  for ($i = 1; $i < count($arg_list)-1; $i++) 
-  {  $parama[$element_name][$arg_list[$i]]=$arg_list[$i]; }
-                    
-return $parama;
-                  }
-
-*/
-
-
-
-
-  //=====construct($element_name,$nazn,$key_primeira,$campos,$put)===================================================================
-public function __construct() 
-{
- $this->adress=adress;
- $this->primeira_pagina='home';
- 
-$this->element['heder']=array ('nazn'=>para_menu,'key_primeira'=>'name','campos'=>array('name','disri'),'put'=>PAGINA_HTML);
-$this->element['heder']['sablon'] ="<li><a href='index.php?option=%s' >%s</a></li> ";
-  
-
-$this->element['slader']=array ('nazn'=>para_pleer,'key_primeira'=>'num','campos'=>array('num','name_client','texto_file'),
-                        'dod_file'=>para_pleer_txt_file.'client_',
-                        'put'=>PAGINA_HTML,'texto_file_name'=>'texto_file','onde'=>para_pleer_txt_file);
-$this->element['slader']['sablon'] ="<div><figure><img src ='".para_pleer_foto."%s.webp'  ></img> <figcaption>%s %s</figcaption></figure></div>";
-                
-
-
-
-$this->element['loja_todo']=array ('nazn'=>para_loja_suplumentos,'key_primeira'=>'id',
-'campos'=>array('id','tovar','name','name',
-'id','name',
-'tovar','tip','imj_jpg','name',
-'tovar','tip','name','sena'),'put'=>para_suplumentos);
-$this->element['loja_todo']['sablon'] ="<div id='%s_todo'>
-     <a href='index.php?option=".para_suplumentos."%s' title='Visualização rápida_%s'><h3>%s</h3></a>
-     <a href='#korzina'  id='compra_todo_%s' title='Visualização rápida_%s' class='kompa'>".
-     //$korzina_kada->blok.
-     "<b> COMPRAR</b></a>
-     <a href='index.php?option=".para_suplumentos."%s&tip=%s' ><img src='./PARA_LOJA/SUPLUMENTOS/pic/%s'  title='Visualização rápida_%s' >
-	 </img></a><a href='index.php?option=".para_suplumentos."%s&tip=%s' title='Visualização rápida_%s'> <h4>%s</h4></a>
-   </div>";
-
-   $this->element['loja_electro']=array ('nazn'=>para_loja_suplumentos,'key_primeira'=>'id','campos'=>array('id','tovar','name','name',
- 'id','name',
-  'tovar','tip','imj_jpg','name','tovar','tip','name','sena'),'campo_umova'=>'tip','campo_val'=>'electro','put'=>para_suplumentos);
-  $this->element['loja_electro']['sablon'] ="<div id='%s_electro'>
-<a href='index.php?option=".para_suplumentos."%s' title='Visualização rápida_%s'><h3>%s</h3></a>
-<a href='#korzina'  id='compra_electro_%s' title='Visualização rápida_%s' class='kompa'><b> COMPRAR</b></a>
-<a href='index.php?option=".para_suplumentos."%s&tip=%s' ><img src='./PARA_LOJA/SUPLUMENTOS/pic/%s'  title='Visualização rápida_%s' >
-</img></a><a href='index.php?option=".para_suplumentos."%s&tip=%s' title='Visualização rápida_%s'> <h4>%s</h4></a></div>";
-
-$this->element['loja_suplum']=array ('nazn'=>para_loja_suplumentos,'key_primeira'=>'id','campos'=>array('id','tovar','name','name',
-'id','name',
-'tovar','tip','imj_jpg','name','tovar','tip','name','sena'),'campo_umova'=>'tip','campo_val'=>'suplum','put'=>para_suplumentos);
-$this->element['loja_suplum']['sablon'] ="<div id='%s_suplum'>
-<a href='index.php?option=".para_suplumentos."%s' title='Visualização rápida_%s'><h3>%s</h3></a>
-<a href='#korzina'  id='compra_suplum_%s' title='Visualização rápida_%s' class='kompa'><b> COMPRAR</b></a>
-<a href='index.php?option=".para_suplumentos."%s&tip=%s' ><img src='./PARA_LOJA/SUPLUMENTOS/pic/%s'  title='Visualização rápida_%s' >
-</img></a><a href='index.php?option=".para_suplumentos."%s&tip=%s' title='Visualização rápida_%s'> <h4>%s</h4></a></div>";
-
-
-}
-
- 
-}  //end Acore
 
 ///----------------------------------------------------------------------------------
-class out_like extends  Acore{ 
-  static public function  para_optio_select ($name_var,$options,$selection_key)
+class out_like extends para_trab_XML{ 
+   static public function  para_optio_select ($name_var,$options,$selection_key)
   {
 
    if (isset($para_forma)) {$para_form="form='".$para_forma."'";}
@@ -446,6 +356,58 @@ class out_like extends  Acore{
     return $selecd;
   }
 }
+//---------------------------------------------------------------
+
+require_once('config.php');
+//$this->adress=adress;
+$primeira_pagina='home';
+
+$element['heder']=array ('nazn'=>para_menu,'key_primeira'=>'name','campos'=>array('name','disri'),'put'=>PAGINA_HTML,
+'sablon' =>"<li><a href='index.php?option=%s' >%s</a></li>");
+ 
+
+$element['slader']=array ('nazn'=>para_pleer,'key_primeira'=>'num','campos'=>array('num','name_client','texto_file'),
+                       'dod_file'=>para_pleer_txt_file.'client_',
+                       'put'=>PAGINA_HTML,'texto_file_name'=>'texto_file','onde'=>para_pleer_txt_file);
+$element['slader']['sablon'] ="<div><figure><img src ='".para_pleer_foto."%s.webp'  ></img> <figcaption>%s %s</figcaption></figure></div>";
+               
+
+
+
+$element['loja_todo']=array ('nazn'=>para_loja_suplumentos,'key_primeira'=>'id',
+'campos'=>array('id','tovar','name','name',
+'id','name',
+'tovar','tip','imj_jpg','name',
+'tovar','tip','name','sena'),'put'=>para_suplumentos);
+$element['loja_todo']['sablon'] ="<div id='%s_todo'>
+    <a href='index.php?option=".para_suplumentos."%s' title='Visualização rápida_%s'><h3>%s</h3></a>
+    <a href='#korzina'  id='compra_todo_%s' title='Visualização rápida_%s' class='kompa'>".
+    //$korzina_kada->blok.
+    "<b> COMPRAR</b></a>
+    <a href='index.php?option=".para_suplumentos."%s&tip=%s' ><img src='./PARA_LOJA/SUPLUMENTOS/pic/%s'  title='Visualização rápida_%s' >
+  </img></a><a href='index.php?option=".para_suplumentos."%s&tip=%s' title='Visualização rápida_%s'> <h4>%s</h4></a>
+  
+  </div>";
+
+  $element['loja_electro']=array ('nazn'=>para_loja_suplumentos,'key_primeira'=>'id','campos'=>array('id','tovar','name','name',
+'id','name',
+ 'tovar','tip','imj_jpg','name','tovar','tip','name','sena'),'campo_umova'=>'tip','campo_val'=>'electro','put'=>para_suplumentos);
+ $element['loja_electro']['sablon'] ="<div id='%s_electro'>
+<a href='index.php?option=".para_suplumentos."%s' title='Visualização rápida_%s'><h3>%s</h3></a>
+<a href='#korzina'  id='compra_electro_%s' title='Visualização rápida_%s' class='kompa'><b> COMPRAR</b></a>
+<a href='index.php?option=".para_suplumentos."%s&tip=%s' ><img src='./PARA_LOJA/SUPLUMENTOS/pic/%s'  title='Visualização rápida_%s' >
+</img></a><a href='index.php?option=".para_suplumentos."%s&tip=%s' title='Visualização rápida_%s'> <h4>%s</h4></a></div>";
+
+$element['loja_suplum']=array ('nazn'=>para_loja_suplumentos,'key_primeira'=>'id','campos'=>array('id','tovar','name','name',
+'id','name',
+'tovar','tip','imj_jpg','name','tovar','tip','name','sena'),'campo_umova'=>'tip','campo_val'=>'suplum','put'=>para_suplumentos);
+$element['loja_suplum']['sablon'] ="<div id='%s_suplum'>
+<a href='index.php?option=".para_suplumentos."%s' title='Visualização rápida_%s'><h3>%s</h3></a>
+<a href='#korzina'  id='compra_suplum_%s' title='Visualização rápida_%s' class='kompa'><b> COMPRAR</b></a>
+<a href='index.php?option=".para_suplumentos."%s&tip=%s' ><img src='./PARA_LOJA/SUPLUMENTOS/pic/%s'  title='Visualização rápida_%s' >
+</img></a><a href='index.php?option=".para_suplumentos."%s&tip=%s' title='Visualização rápida_%s'> <h4>%s</h4></a></div>";
+
+
 
 
 
@@ -456,38 +418,43 @@ class out_like extends  Acore{
 
 
 //---------обьект весь ресурс - сайт
-$asa=new Acore();
-
+//if (!isset($asa))
+{
+//$asa=new Acore();
+//$asa->adress=adress;
+$primeira_pagina='home';
 
 //------------------------создание головного меню
 //-------------------------------------------------------------------------
-$asa->header=PAGINA_HTML.'header.php';
-$asa_xml_obj['heder']=new para_trab_XML('heder',$asa->element['heder'],$asa->element['heder']['sablon']);   
+$header=PAGINA_HTML.'header.php';
+$xml_obj['heder']=new para_trab_XML('heder',$element['heder']);   
 
 
 
 
 //------------------------upload modul----and create object for  page------------------
 $stran="";
-
-if (isset ($_GET['option']))
+//echo "jjj=".$_GET['option']."<br>";
+if ((isset ($_GET['option'])))
    { $mod=$_GET['option'];}
-else{$mod=$asa->primeira_pagina;}
+else{$mod=$primeira_pagina;}
 
-if (isset($asa->element[$mod]))
-   {  $asa_xml_obj[$mod]=new para_trab_XML($mod,$asa->element[$mod],$asa->element[$mod]['sablon']);
-      $stran= $asa_xml_obj[$mod]->put; 
+if (isset($element[$mod]))
+   {  $xml_obj[$mod]=new para_trab_XML($mod,$element[$mod]);
+      $stran= $xml_obj[$mod]->put; 
      }
 
   else{
 
-  if (isset($asa_xml_obj['heder']->dado[$mod]))   {
+  if (isset($xml_obj['heder']->dado[$mod]))   {
                                          $stran=PAGINA_HTML;
-                                         if (isset($asa_xml_obj['heder']->dado[$mod][pagina_object]))
+                                         if (isset($xml_obj['heder']->dado[$mod][pagina_object]))
                                          { 
-                                          $elem_pag=explode(",", $asa_xml_obj['heder']->dado[$mod][pagina_object]);
+                                          $elem_pag=explode(",", $xml_obj['heder']->dado[$mod][pagina_object]);
+                                         
                                           foreach ($elem_pag as $pag_val){   
-                                                  $asa_xml_obj[$pag_val]=new para_trab_XML($pag_val,$asa->element[$pag_val],$asa->element[$pag_val]['sablon']);
+                                                  $xml_obj[$pag_val]=new para_trab_XML($pag_val,$element[$pag_val]);
+                                                
                                           }
                                           
                                           } 
@@ -496,40 +463,29 @@ if (isset($asa->element[$mod]))
      }
  
                                             
-  $asa->bod_seredina =$asa->get_modul($stran.$mod);
+  $bod_seredina =get_modul($stran.$mod);
    
-$asa->futer =PAGINA_HTML.'futer.php';		
+$futer =PAGINA_HTML.'futer.php';		
 
 
+    }
 
-
-if (isset ($_GET['tip'])) { $asa->tip=$_GET['tip'];}
-
-
-
-
-
-
-
+//if (isset ($_GET['tip'])) { $asa->tip=$_GET['tip'];}
 //-------------------------------------------------------------------------------
 
 
-/*
-
-
 //--- создание или данные сессии----
-  session_start();
- IF (!isset ($_SESSION['korzina_kada']) )
-                { $_SESSION['korzina_kada']=new korzina_todo();  } 
+session_start();
+IF (!isset ($_SESSION['korzina_kada']) )
+               { $_SESSION['korzina_kada']=new korzina_todo();  } 
 
-  $korzina_kada=($_SESSION['korzina_kada']); 
+ $korzina_kada=($_SESSION['korzina_kada']); 
 
-  //------ вывести содержимое корзины
-  if (isset ($_GET['id_todo'])){
-    $tovar_druk=$korzina_kada->get_korz_();
-    //$tovar_druk['kol_total']=$korzina_kada->get_total_kol();
-    print_r(json_encode($tovar_druk));
-  }       
+ //------ вывести содержимое корзины
+ if (isset ($_GET['id_todo'])){
+   $tovar_druk=$korzina_kada->get_korz_();
+   print_r(json_encode($tovar_druk));
+ }       
 
 
 
@@ -537,18 +493,21 @@ if (isset ($_GET['tip'])) { $asa->tip=$_GET['tip'];}
 //------ добавить элемент в корзину
 if (isset ($_GET['id'])){
 
-  $id=$_GET['id'];
-  //print_r($asa->xml_obj['loja_todo']->dado[$id]);
-  $tovarr=$korzina_kada->set_korz_($id,$asa->xml_obj['loja_todo']->dado[$id]);
- // if ($tovarr==0)
- {
+ $id=$_GET['id'];
+ 
+ $tovarr=$korzina_kada->set_korz_($id,$xml_obj['loja_todo']->dado[$id]);
+// if ($tovarr==0)
+{
 
-  //$dato['total']=$korzina_kada->get_total_();
-  //$dato['kol_total']=$korzina_kada->get_total_kol();
-  $tovar_druk=$korzina_kada->get_korz_();
-  //$tovar_druk['kol_total']=$korzina_kada->get_total_kol();
- print_r(json_encode($tovar_druk));
- // print_r($tovarr);
+ //$dato['total']=$korzina_kada->get_total_();
+ //$dato['kol_total']=$korzina_kada->get_total_kol();
+ $tovar_druk=$korzina_kada->get_korz_();
+ //$tovar_druk['kol_total']=$korzina_kada->get_total_kol();
+//print_r($tovarr);
+
+print_r(json_encode($tovar_druk));
+
+// print_r($tovarr);
 }
 //else { $mensage="o produto já está no carrinho, adicione a quantidade no carrinho.товар уже в корзине, добавьте количество в корзину";
 //echo "<script> alert('o produto já está no carrinho, adicione a quantidade no carrinho.товар уже в корзине, добавьте количество в корзину');</script>";}
@@ -556,34 +515,35 @@ if (isset ($_GET['id'])){
 
 //------ добавить или уменьшить количество единиц товара одного вида в корзине
 if (isset ($_GET['id_plus'])){
-    $id=$_GET['id_plus'];
-    $znak=$_GET['val'];
-    $d=$korzina_kada->set_korz_minus_plus_($id,$znak);
-    $dato=array();
-    $dato['kol']=$korzina_kada->tovar[$id]['kol'];
-    $dato['sum']=$korzina_kada->tovar[$id]['kol']*$korzina_kada->tovar[$id]['sena'];
-    $dato['total']=$korzina_kada->sum;
-    $dato['kol_total']=$korzina_kada->kol;
+   $id=$_GET['id_plus'];
+   $znak=$_GET['val'];
+   $d=$korzina_kada->set_korz_minus_plus_($id,$znak);
+   $dato=array();
+   $dato['kol']=$korzina_kada->tovar[$id]['kol'];
+   $dato['sum']=$korzina_kada->tovar[$id]['kol']*$korzina_kada->tovar[$id]['sena'];
+   $dato['total']=$korzina_kada->sum;
+   $dato['kol_total']=$korzina_kada->kol;
 
-    print_r(json_encode($dato));
-   
+   print_r(json_encode($dato));
+  
 }
 
 //------ удалить весь товар одного вида в корзине
 if (isset ($_GET['delete_coisa'])){
-  $id=$_GET['delete_coisa'];
-  $val=$_GET['val'];
-  $d=$korzina_kada->delete_tovar($id,$val);
-  $dato=array();
-  $dato['total']=$korzina_kada->sum;
-  $dato['kol_total']=$korzina_kada->kol;
-  print_r(json_encode($dato));
+ $id=$_GET['delete_coisa'];
+ $val=$_GET['val'];
+ $d=$korzina_kada->delete_tovar($id,$val);
+ $dato=array();
+ $dato['total']=$korzina_kada->sum;
+ $dato['kol_total']=$korzina_kada->kol;
+ print_r(json_encode($dato));
 }
 
 //------ почистить корзину
 if (isset ($_GET['Remove'])){
-         unset($_SESSION['korzina_kada']);
-        // unset($_SESSION['tovar']);
+        unset($_SESSION['korzina_kada']);
+       // unset($_SESSION['tovar']);
 }
-*/
+
+
   ?>

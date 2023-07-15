@@ -1,6 +1,6 @@
 <div class='lojasoz'>
 <h1>GLUCOSAMINA + CONDROITINA FORTE</h1><h2>Preço:29.00€</h2>
-<img src=<?php echo '"'.adress.'/PARA_LOJA/SUPLUMENTOS/pic/00026_grand.webp"';?> title="aram.Sobralinho.GLUCOSAMINA + CONDROITINA FORTE" alt="comprar GLUCOSAMINA + CONDROITINA FORTE">
+<img src=<?php echo '"'.adress.'PARA_LOJA/SUPLUMENTOS/pic/00026_grand.webp"';?> title="aram.Sobralinho.GLUCOSAMINA + CONDROITINA FORTE" alt="comprar GLUCOSAMINA + CONDROITINA FORTE">
 </img>
 
 <div>

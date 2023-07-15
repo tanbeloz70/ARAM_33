@@ -2,10 +2,10 @@
     <div class='hed_aram'>
 
           <div style="width:70%;">
-            <a href="<?php  echo $asa->adress; ?>"  >
+            <a href="<?php  echo $adress; ?>"  >
                <h2>ARAM.Kinesioterapia</h2>
             </a>
-            <a href="<?php  echo $asa->adress; ?>"  >
+            <a href="<?php  echo $adress; ?>"  >
                <img src="./PIC/RIS2.jpg" ></img>
             </a>
            </div>
@@ -21,7 +21,7 @@
 
 <div class='menu'><ul>
           <?php 
-          echo $asa_xml_obj['heder']->heder;
+          echo $xml_obj['heder']->heder;
             ?>
           </ul>
           

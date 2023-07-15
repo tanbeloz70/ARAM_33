@@ -1,6 +1,6 @@
 <div class='lojasoz'>
 <h1>GLUCOSAMINA + CONDROITINA</h1><h2>Preço:20.00€</h2>
-<img src=<?php echo '"'.adress.'/PARA_LOJA/SUPLUMENTOS/pic/00029_grand.webp"';?> title="aram.Sobralinho.GLUCOSAMINA + CONDROITINA" alt="comprar GLUCOSAMINA + CONDROITINA">
+<img src=<?php echo '"'.adress.'PARA_LOJA/SUPLUMENTOS/pic/00029_grand.webp"';?> title="aram.Sobralinho.GLUCOSAMINA + CONDROITINA" alt="comprar GLUCOSAMINA + CONDROITINA">
 
 <div><h4>NATURMIL: AS MIL RESPOSTAS DA NATUREZA</h4>
 <h5>COM VITAMINA C E MANGANÊS</h5>

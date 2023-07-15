@@ -1,6 +1,6 @@
 <div class='lojasoz'>
 <h1>COLLAFORCE OSTEO</h1><h2>Preço:25.00€</h2>
-<img src=<?php echo '"'.adress.'/PARA_LOJA/SUPLUMENTOS/pic/00027_grand.webp"';?> title="aram.Sobralinho.COLLAFORCE OSTEO" alt="comprar COLLAFORCE OSTEO">
+<img src=<?php echo '"'.adress.'PARA_LOJA/SUPLUMENTOS/pic/00027_grand.webp"';?> title="aram.Sobralinho.COLLAFORCE OSTEO" alt="comprar COLLAFORCE OSTEO">
 
 <div><h4>A FORÇA DO COLAGÉNIO</h4>
 <b>OSSOS</b>O Cálcio é necessário para a manutenção de ossos normais

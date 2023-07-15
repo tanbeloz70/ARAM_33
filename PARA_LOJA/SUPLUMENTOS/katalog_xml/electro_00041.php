@@ -1,6 +1,6 @@
 <div class='lojasoz'>
 <h1>T-One Coach </h1><h2>Preço:259.00€</h2>
-<img src="http://localhost/ARAM_33/PARA_LOJA/SUPLUMENTOS/pic/00001_grand.webp" title="T-One Coach " alt="T-One Coach ">
+<img src=<?php echo '"'.adress.'/PARA_LOJA/SUPLUMENTOS/pic/00041_grand.webp'.'"'; ?> title="T-One Coach " alt="T-One Coach ">
 
 <div>
 É um dispositivo completo para quem ama o desporto, mas não o faz por profissão.

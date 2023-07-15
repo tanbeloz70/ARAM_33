@@ -1,6 +1,6 @@
 <div class='lojasoz'>
 <h1>COLLAFORCE FISIO</h1><h2>Preço:17.00€</h2>
-<img src=<?php echo '"'.adress.'/PARA_LOJA/SUPLUMENTOS/pic/00023_grand.webp"';?> title="aram.Sobralinho.COLLAFORCE FISIO" alt="comprar COLLAFORCE FISIO">
+<img src=<?php echo '"'.adress.'PARA_LOJA/SUPLUMENTOS/pic/00023_grand.webp"';?> title="aram.Sobralinho.COLLAFORCE FISIO" alt="comprar COLLAFORCE FISIO">
 
 <div><h4>A FORÇA DO COLAGÉNIO</h4>
 <p>COLAGÉNIO, ARNICA & HARPAGOGLUCOSAMINA & CONDROITINAEFEITO FRIO</p></div>

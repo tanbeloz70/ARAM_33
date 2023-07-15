@@ -21,23 +21,24 @@
 
 </div>
 <div style='clear: both;width: 100%'>
+<!---
 <form name="" id='' action="" method="post" style="margin: 0px; padding: 0px;width: 30%;float: left;" >
 
 <?php $options=array("Selecionar"=>'Selecionar por',"Mais"=>'Mais por',"Preco1"=>'Preço (menor ao maior)',
                       "Preco2"=>'Preço (maior ao menor)',"Nome1"=>'Nome A - Z',"Nome2"=>'Nome Z -A'); 
                       
-    echo out_like::para_optio_select ('select_name',$options,@$asa->param_post['select_name'],); ?>
-</form>
+    echo out_like::para_optio_select ('select_name',$options,$xml_obj['loja']->param_post['select_name'],); ?>
+</form>--->
 </div>
 
 <div class='katalog' style='clear: both; background-color: #fff;' >
 <h1>Se precisa de ajuda para escolher o seu produto não hesite em nos contatar.</h1>
  
 
-<div id='loja_todo'> <?php echo ( @$asa_xml_obj['loja_todo']->loja_todo);  ?> </div>
+<div id='loja_todo'> <?php echo ( @$xml_obj['loja_todo']->loja_todo);  ?> </div>
 
-<div id='loja_electro'  style="display: none;"><?php echo (@$asa_xml_obj['loja_electro']->loja_electro);  ?></div>
+<div id='loja_electro'  style="display: none;"><?php echo (@$xml_obj['loja_electro']->loja_electro);  ?></div>
 
-<div id='loja_suplum'  style="display: none;"><?php echo ( @$asa_xml_obj['loja_suplum']->loja_suplum);  ?></div>
+<div id='loja_suplum'  style="display: none;"><?php echo ( @$xml_obj['loja_suplum']->loja_suplum);  ?></div>
 
 </div>

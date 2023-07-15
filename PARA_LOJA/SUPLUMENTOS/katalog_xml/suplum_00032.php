@@ -1,6 +1,6 @@
 <div class='lojasoz'>
 <h1>INFLADOL DUO</h1><h2>Preço:30.00€</h2>
-<img src=<?php echo '"'.adress.'/PARA_LOJA/SUPLUMENTOS/pic/00032_grand.webp"';?> title="aram.Sobralinho.INFLADOL DUO" alt="comprar INFLADOL DUO">
+<img src=<?php echo '"'.adress.'PARA_LOJA/SUPLUMENTOS/pic/00032_grand.webp"';?> title="aram.Sobralinho.INFLADOL DUO" alt="comprar INFLADOL DUO">
 
 <div><h4>ARTICULAÇÕES SAUDÁVEIS!</h4>
 

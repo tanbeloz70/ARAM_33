@@ -1,6 +1,6 @@
 <div class='lojasoz'>
 <h1>T-ONE Medi Sport</h1><h2>Preço:285.00€</h2>
-<img src="http://localhost/ARAM_33/PARA_LOJA/SUPLUMENTOS/pic/00042_grand.webp" title="T-ONE Medi Sport " alt="T-ONE Medi Sport ">
+<img src=<?php echo '"'.adress.'/PARA_LOJA/SUPLUMENTOS/pic/00042_grand.webp'.'"'; ?> title="T-ONE Medi Sport " alt="T-ONE Medi Sport ">
 
 <div>
 Se o desporto é a sua profissão ou o vive como tal, T-ONE Medi Sport é o instrumento ideal para levar a sua performance a

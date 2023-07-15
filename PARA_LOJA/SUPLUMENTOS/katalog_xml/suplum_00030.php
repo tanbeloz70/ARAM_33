@@ -1,6 +1,6 @@
 <div class='lojasoz'>
 <h1>KONDROSAMINA MSM RAPID</h1><h2>Preço:23.00€</h2>
-<img src=<?php echo '"'.adress.'/PARA_LOJA/SUPLUMENTOS/pic/00030_grand.webp"';?> title="aram.Sobralinho.KONDROSAMINA MSM RAPID" alt="comprar KONDROSAMINA MSM RAPID">
+<img src=<?php echo '"'.adress.'PARA_LOJA/SUPLUMENTOS/pic/00030_grand.webp"';?> title="aram.Sobralinho.KONDROSAMINA MSM RAPID" alt="comprar KONDROSAMINA MSM RAPID">
 
 <div><h4>SE CADA PASSO QUE DÁ É UM DESAFIO,
 EXPERIMENTE KONDROSAMINA MSM</h4>

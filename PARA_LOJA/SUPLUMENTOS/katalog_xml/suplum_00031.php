@@ -1,6 +1,6 @@
 <div class='lojasoz'>
 <h1>SILICIO COM CAVALINHA PLUS</h1><h2>Preço:20.00€</h2>
-<img src=<?php echo '"'.adress.'/PARA_LOJA/SUPLUMENTOS/pic/00031_grand.webp"';?> title="aram.Sobralinho.SILICIO COM CAVALINHA PLUS" alt="comprar SILICIO COM CAVALINHA PLUS">
+<img src=<?php echo '"'.adress.'PARA_LOJA/SUPLUMENTOS/pic/00031_grand.webp"';?> title="aram.Sobralinho.SILICIO COM CAVALINHA PLUS" alt="comprar SILICIO COM CAVALINHA PLUS">
 
 <div><h4>NATURMIL: AS MIL RESPOSTAS DA NATUREZA</h4>
 
